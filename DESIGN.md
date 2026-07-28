@@ -195,7 +195,7 @@ components:
 - **Shadow Strategy:** 仅摄影和浮层使用 Elevation 章节中的环境影。
 - **Border:** 项目说明以顶部一像素强线开始；首屏摄影后方使用错位细线框。
 - **Internal Padding:** 项目说明顶部 20px；写作面板为响应式 72–112px，移动端为上下 72px、左右 24px。
-- **Responsive Images:** 首屏图像声明 1536×1024 的真实尺寸，项目图像声明 735×480 的真实尺寸，并提供对应的 `sizes` 规则生成响应式 `srcset`；两类图像都由 CSS 绝对定位到容器四边，以 100% 宽高和 `object-fit: cover` 填满既定画幅。
+- **Responsive Images:** 首屏图像声明 1536×1024 的真实尺寸；游戏插画使用经过高质量网页优化的 2400×1221 版本，其余项目图像声明 735×480 的真实尺寸，并提供对应的 `sizes` 规则生成响应式 `srcset`。图像由 CSS 绝对定位到容器四边，以 100% 宽高和 `object-fit: cover` 填满既定画幅。
 
 ### Navigation
 

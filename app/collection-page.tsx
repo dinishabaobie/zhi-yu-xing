@@ -7,6 +7,8 @@ export type CollectionItem = {
   description: string;
   image: string;
   alt: string;
+  imageWidth?: number;
+  imageHeight?: number;
   href: string;
 };
 
@@ -73,8 +75,8 @@ export function CollectionPage({
                   <Image
                     src={item.image}
                     alt={item.alt}
-                    width={735}
-                    height={480}
+                    width={item.imageWidth ?? 735}
+                    height={item.imageHeight ?? 480}
                     sizes={
                       items.length === 1
                         ? "(max-width: 767px) 100vw, 72vw"

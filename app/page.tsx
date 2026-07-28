@@ -15,8 +15,10 @@ const portals = [
     kind: "板块一",
     description:
       "从《旅途愉快》开始，收录游戏世界、人物、叙事与版本观察。",
-    image: "/travel.jpg",
-    alt: "列车窗外的山与公路，窗边摊开一张地图",
+    image: "/game.jpg",
+    alt: "粉色长发的游戏角色坐在飞散的乐谱与纸页之间",
+    width: 2400,
+    height: 1221,
     className: "project project-game",
     href: "/games",
   },
@@ -28,6 +30,8 @@ const portals = [
       "把电工知识和之后的实践经验，做成可以操作、练习与复用的工具。",
     image: "/electrical.jpg",
     alt: "铜线、指针仪表与电气元件整齐放在灰色工作台上",
+    width: 735,
+    height: 480,
     className: "project project-work",
     href: "/work",
   },
@@ -39,6 +43,8 @@ const portals = [
       "从逻辑学到科学、技术与文明，建立一张持续扩展的学科索引。",
     image: "/logic.jpg",
     alt: "铅笔、镇纸与写有几何证明和逻辑符号的纸张",
+    width: 735,
+    height: 480,
     secondaryImage: "/science.jpg",
     secondaryAlt: "实验玻璃器皿、三棱镜与培养皿中的植物标本",
     className: "project project-knowledge",
@@ -125,8 +131,8 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
                         <Image
                           src={portal.image}
                           alt={portal.alt}
-                          width={735}
-                          height={480}
+                          width={portal.width}
+                          height={portal.height}
                           sizes="(max-width: 767px) 50vw, 36vw"
                         />
                       </div>
@@ -145,8 +151,8 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
                       <Image
                         src={portal.image}
                         alt={portal.alt}
-                        width={735}
-                        height={480}
+                        width={portal.width}
+                        height={portal.height}
                         sizes={
                           portal.id === "games"
                             ? "(max-width: 767px) 100vw, 58vw"

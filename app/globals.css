@@ -486,6 +486,10 @@ img {
   aspect-ratio: 4 / 5;
 }
 
+.project-game .project-image {
+  aspect-ratio: 2400 / 1221;
+}
+
 .project-image-pair {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;

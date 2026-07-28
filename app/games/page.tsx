@@ -18,8 +18,10 @@ export default function GamesPage() {
           kind: "鸣潮专题",
           description:
             "借黑海岸与泰缇斯终端的视角，整理角色档案、剧情解析、版本记录与索拉里斯纪年。",
-          image: "/travel.jpg",
-          alt: "列车窗外的山与公路，窗边摊开一张地图",
+          image: "/game.jpg",
+          alt: "粉色长发的游戏角色坐在飞散的乐谱与纸页之间",
+          imageWidth: 2400,
+          imageHeight: 1221,
           href: "https://dinishabaobie.github.io/wuwa-bon-voyage/",
         },
       ]}
