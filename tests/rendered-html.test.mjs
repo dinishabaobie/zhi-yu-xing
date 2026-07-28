@@ -47,6 +47,7 @@ test("server-renders the personal knowledge portfolio", async () => {
   assert.match(html, /href="\/games"/);
   assert.match(html, /game\.jpg/);
   assert.match(html, /href="\/work"/);
+  assert.match(html, /work\.jpg/);
   assert.match(html, /href="\/knowledge"/);
   assert.match(html, /热点点评/);
   assert.match(html, /data-design-contract/);
@@ -79,6 +80,7 @@ test("groups the existing sites into game, work, and knowledge collections", asy
 
   assert.match(workHtml, /工作板块/);
   assert.match(workHtml, /电工/);
+  assert.match(workHtml, /work\.jpg/);
   assert.match(workHtml, /dinishabaobie\.github\.io\/electrician-simulator\//);
 
   assert.match(knowledgeHtml, /知识板块/);

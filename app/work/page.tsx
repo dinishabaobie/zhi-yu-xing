@@ -18,8 +18,11 @@ export default function WorkPage() {
           kind: "电工学习工具",
           description:
             "拖拽元件、自由接线并运行电路，在单灯单控、接触器点动与自锁练习中理解通断逻辑。",
-          image: "/electrical.jpg",
-          alt: "铜线、指针仪表与电气元件整齐放在灰色工作台上",
+          image: "/work.jpg",
+          alt: "粉色长发的角色抱着一只 GeForce RTX 5090 包装盒",
+          imageWidth: 2000,
+          imageHeight: 3013,
+          imageClassName: "collection-image-work",
           href: "https://dinishabaobie.github.io/electrician-simulator/",
         },
       ]}

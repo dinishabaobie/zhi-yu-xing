@@ -486,6 +486,10 @@ img {
   aspect-ratio: 4 / 5;
 }
 
+.project-work .project-image img {
+  object-position: center 35%;
+}
+
 .project-game .project-image {
   aspect-ratio: 2400 / 1221;
 }
@@ -685,6 +689,14 @@ a.project-entry .project-status {
 
 .collection-items-single .collection-image {
   aspect-ratio: 16 / 8;
+}
+
+.collection-image.collection-image-work {
+  aspect-ratio: 4 / 5;
+}
+
+.collection-image-work img {
+  object-position: center 35%;
 }
 
 .collection-image img {

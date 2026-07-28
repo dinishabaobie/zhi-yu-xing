@@ -9,6 +9,7 @@ export type CollectionItem = {
   alt: string;
   imageWidth?: number;
   imageHeight?: number;
+  imageClassName?: string;
   href: string;
 };
 
@@ -71,7 +72,9 @@ export function CollectionPage({
                 rel="noreferrer"
                 aria-label={`打开${item.title}专题（新窗口）`}
               >
-                <div className="collection-image">
+                <div
+                  className={`collection-image ${item.imageClassName ?? ""}`}
+                >
                   <Image
                     src={item.image}
                     alt={item.alt}
