@@ -2,13 +2,16 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
+  workerUrl.searchParams.set(
+    "test",
+    `${process.pid}-${Date.now()}-${pathname.replaceAll("/", "-")}`,
+  );
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -31,27 +34,62 @@ test("server-renders the personal knowledge portfolio", async () => {
   const html = await response.text();
   assert.match(html, /<html[^>]*lang="zh-CN"/i);
   assert.match(html, /知与行/);
-  assert.match(html, /旅途愉快/);
-  assert.match(html, /电工/);
-  assert.match(html, /逻辑学/);
-  assert.match(html, /科学/);
-  assert.match(html, /dinishabaobie\.github\.io\/wuwa-bon-voyage\//);
-  assert.match(html, /dinishabaobie\.github\.io\/electrician-simulator\//);
+  assert.match(html, /三个入口，各有自己的秩序/);
+  assert.match(html, /href="\/games"/);
+  assert.match(html, /href="\/work"/);
+  assert.match(html, /href="\/knowledge"/);
   assert.match(html, /热点点评/);
   assert.match(html, /data-design-contract/);
+  assert.doesNotMatch(html, /dinishabaobie\.github\.io/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 });
 
+test("groups the existing sites into game, work, and knowledge collections", async () => {
+  const [games, work, knowledge] = await Promise.all([
+    render("/games"),
+    render("/work"),
+    render("/knowledge"),
+  ]);
+
+  assert.equal(games.status, 200);
+  assert.equal(work.status, 200);
+  assert.equal(knowledge.status, 200);
+
+  const [gamesHtml, workHtml, knowledgeHtml] = await Promise.all([
+    games.text(),
+    work.text(),
+    knowledge.text(),
+  ]);
+
+  assert.match(gamesHtml, /游戏板块/);
+  assert.match(gamesHtml, /旅途愉快/);
+  assert.match(gamesHtml, /dinishabaobie\.github\.io\/wuwa-bon-voyage\//);
+
+  assert.match(workHtml, /工作板块/);
+  assert.match(workHtml, /电工/);
+  assert.match(workHtml, /dinishabaobie\.github\.io\/electrician-simulator\//);
+
+  assert.match(knowledgeHtml, /知识板块/);
+  assert.match(knowledgeHtml, /逻辑学/);
+  assert.match(knowledgeHtml, /科学、技术与文明/);
+  assert.match(knowledgeHtml, /logic-field-guide\.you-know\.chatgpt\.site/);
+  assert.match(
+    knowledgeHtml,
+    /science-civilization-atlas\.you-know\.chatgpt\.site/,
+  );
+});
+
 test("ships the authored visual system and removes the starter preview", async () => {
-  const [page, layout, css, packageJson] = await Promise.all([
+  const [page, layout, siteChrome, css, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/site-chrome.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /knowledge-contact-sheet\.jpg/);
-  assert.match(page, /ThemeToggle/);
+  assert.match(siteChrome, /ThemeToggle/);
   assert.match(layout, /lang="zh-CN"/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /data-theme="dark"/);

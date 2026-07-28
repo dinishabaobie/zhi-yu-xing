@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s｜知与行",
   },
   description:
-    "旅行、电工、逻辑学与科学专题，以及持续更新的笔记与热点点评。",
+    "游戏、工作与知识三个板块，以及持续更新的笔记与热点点评。",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "知与行｜个人知识与作品入口",
     description:
-      "旅行、电工、逻辑学与科学专题，以及持续更新的笔记与热点点评。",
+      "游戏、工作与知识三个板块，以及持续更新的笔记与热点点评。",
     type: "website",
     locale: "zh_CN",
   },
