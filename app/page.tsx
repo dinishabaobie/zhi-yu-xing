@@ -60,7 +60,7 @@ export default function Home() {
 THESIS: 把个人网站做成一张会扩展的知识索引桌，拒绝履历加等宽卡片的默认组合。
 OWN-WORLD: 冷银灰底、墨色文字、朱红单一强调色；摄影接触印样、档案标签与大尺度中文排版。
 STORY: 读者先被一段关于信息甄别的自嘲式个人宣言吸引，再进入游戏、工作、知识三个板块。
-FIRST VIEWPORT: 左侧分六行展开个人宣言和两个入口，右侧是一张四联原创摄影；主要行动在宣言正下方。
+FIRST VIEWPORT: 左侧分六行展开个人宣言和两个入口，右侧是一张横向深色插画；主要行动在宣言正下方。
 FORM: 七个方向中的第六个，采用非对称档案接触印样展开；本地种子 ad22a2ae。
 -->`,
         }}
@@ -95,17 +95,15 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
 
           <figure className="hero-visual">
             <Image
-              src="/knowledge-contact-sheet.jpg"
-              alt="游戏、工作、逻辑学与科学组成的四联摄影"
-              width={1536}
-              height={1024}
+              src="/hero.jpg"
+              alt="黑发角色伏在桌前执笔写信，蓝黑色画面中有明亮的手部与纸张"
+              width={2400}
+              height={1350}
               priority
               sizes="(max-width: 767px) 100vw, 58vw"
               className="hero-image"
             />
-            <figcaption>
-              三个持续生长的板块，收纳已经开始的四个专题。
-            </figcaption>
+            <figcaption>写给漂泊者的一封信。</figcaption>
           </figure>
         </section>
 

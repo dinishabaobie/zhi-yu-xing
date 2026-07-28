@@ -103,7 +103,7 @@ test("ships the authored visual system and removes the starter preview", async (
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /knowledge-contact-sheet\.jpg/);
+  assert.match(page, /hero\.jpg/);
   assert.match(siteChrome, /ThemeToggle/);
   assert.match(layout, /lang="zh-CN"/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
