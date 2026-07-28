@@ -108,7 +108,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "首屏宣言",
-        "purpose": "首屏两行大尺度中文陈述。"
+        "purpose": "首页首屏分组展开的六行个人宣言。"
       },
       "headline": {
         "displayName": "章节标题",

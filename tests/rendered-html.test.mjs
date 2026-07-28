@@ -34,6 +34,11 @@ test("server-renders the personal knowledge portfolio", async () => {
   const html = await response.text();
   assert.match(html, /<html[^>]*lang="zh-CN"/i);
   assert.match(html, /知与行/);
+  assert.match(html, /小时候家里穷用不起/);
+  assert.match(html, /GPT也用不起Kimi/);
+  assert.match(html, /只能用豆包 听她的唐笑/);
+  assert.match(html, /我把它当做贫穷送我的礼物/);
+  assert.doesNotMatch(html, /走过的路|想过的问题/);
   assert.match(html, /三个入口，各有自己的秩序/);
   assert.match(html, /href="\/games"/);
   assert.match(html, /href="\/work"/);

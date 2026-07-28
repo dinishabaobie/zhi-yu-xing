@@ -294,13 +294,13 @@ img {
 }
 
 .hero h1 {
-  max-width: 720px;
+  max-width: none;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(46px, 5.2vw, 82px);
+  font-size: clamp(32px, 4vw, 56px);
   font-weight: 560;
-  letter-spacing: -0.04em;
-  line-height: 1.04;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
   text-wrap: balance;
 }
 
@@ -314,6 +314,23 @@ img {
   color: var(--ink-soft);
   font-size: clamp(17px, 1.4vw, 20px);
   line-height: 1.65;
+}
+
+.hero-quote-detail {
+  max-width: 31rem;
+}
+
+.hero-quote-detail span {
+  display: block;
+}
+
+.hero-quote-detail span + span {
+  margin-top: 4px;
+}
+
+.hero-quote-detail span:last-child {
+  color: var(--ink);
+  font-weight: 590;
 }
 
 .hero-actions {
@@ -958,10 +975,6 @@ a.project-entry .project-status {
     gap: 34px;
   }
 
-  .hero h1 {
-    font-size: clamp(44px, 6.1vw, 64px);
-  }
-
   .project-grid {
     gap: 64px 28px;
   }
@@ -1035,9 +1048,9 @@ a.project-entry .project-status {
   }
 
   .hero h1 {
-    max-width: 12ch;
-    font-size: clamp(43px, 13vw, 62px);
-    letter-spacing: -0.04em;
+    max-width: none;
+    font-size: clamp(36px, 9.8vw, 42px);
+    letter-spacing: -0.035em;
   }
 
   .hero h1 span {
@@ -1221,6 +1234,10 @@ a.project-entry .project-status {
 
   .hero-actions {
     flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 9.4vw, 36px);
   }
 }
 

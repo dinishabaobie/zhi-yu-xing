@@ -55,8 +55,8 @@ export default function Home() {
           __html: `<!--
 THESIS: 把个人网站做成一张会扩展的知识索引桌，拒绝履历加等宽卡片的默认组合。
 OWN-WORLD: 冷银灰底、墨色文字、朱红单一强调色；摄影接触印样、档案标签与大尺度中文排版。
-STORY: 读者先理解这里收集什么，再进入游戏、工作、知识三个板块，最后看到笔记与评论的生长方式。
-FIRST VIEWPORT: 左侧两行宣言和两个入口，右侧一张四联原创摄影；主要行动在标题正下方。
+STORY: 读者先被一段关于信息甄别的自嘲式个人宣言吸引，再进入游戏、工作、知识三个板块。
+FIRST VIEWPORT: 左侧分六行展开个人宣言和两个入口，右侧是一张四联原创摄影；主要行动在宣言正下方。
 FORM: 七个方向中的第六个，采用非对称档案接触印样展开；本地种子 ad22a2ae。
 -->`,
         }}
@@ -68,12 +68,15 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
         <section className="hero" id="top" aria-labelledby="hero-title">
           <div className="hero-copy">
             <p className="hero-kicker">个人知识与作品入口</p>
-            <h1 id="hero-title">
-              走过的路，
-              <span>想过的问题。</span>
+            <h1 className="hero-quote" id="hero-title">
+              <span>小时候家里穷用不起</span>
+              <span>GPT也用不起Kimi</span>
+              <span>gemini</span>
             </h1>
-            <p className="hero-intro">
-              把游戏、工作与知识分成清楚的板块，也把持续更新的笔记与评论放在一起。
+            <p className="hero-intro hero-quote-detail">
+              <span>只能用豆包 听她的唐笑</span>
+              <span>这养成了我甄别信息的能力</span>
+              <span>我把它当做贫穷送我的礼物</span>
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#works">
