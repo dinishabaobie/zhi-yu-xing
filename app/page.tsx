@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "./site-chrome";
+import { siteAsset } from "./site-path";
 
 export const metadata: Metadata = {
   title: "个人知识",
@@ -15,7 +17,7 @@ const portals = [
     kind: "板块一",
     description:
       "《旅途愉快》是我的《鸣潮》专题。2024 年底开始玩，也从那时起记录角色、剧情与版本。",
-    image: "/game.jpg",
+    image: siteAsset("/game.jpg"),
     alt: "粉色长发的游戏角色坐在飞散的乐谱与纸页之间",
     width: 2400,
     height: 1221,
@@ -28,7 +30,7 @@ const portals = [
     kind: "板块二",
     description:
       "把电工知识和之后的实践经验，做成可以操作、练习与复用的工具。",
-    image: "/work.jpg",
+    image: siteAsset("/work.jpg"),
     alt: "粉色长发的角色抱着一只 GeForce RTX 5090 包装盒",
     width: 2000,
     height: 3013,
@@ -41,7 +43,7 @@ const portals = [
     kind: "板块三",
     description:
       "从逻辑学到科学、技术与文明，建立一张持续扩展的学科索引。",
-    image: "/knowledge.jpg",
+    image: siteAsset("/knowledge.jpg"),
     alt: "人物站在星空与发光星座下，远处有环形轨道与悬浮建筑",
     width: 2400,
     height: 1244,
@@ -95,7 +97,7 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
 
           <figure className="hero-visual">
             <Image
-              src="/hero.jpg"
+              src={siteAsset("/hero.jpg")}
               alt="黑发角色伏在桌前执笔写信，蓝黑色画面中有明亮的手部与纸张"
               width={2400}
               height={1350}
@@ -116,7 +118,7 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
           <div className="project-grid">
             {portals.map((portal) => (
               <article className={`${portal.className} reveal`} key={portal.id}>
-                <a
+                <Link
                   className="project-entry"
                   href={portal.href}
                   aria-label={`进入${portal.title}板块`}
@@ -146,7 +148,7 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
                       进入板块 <span aria-hidden="true">→</span>
                     </span>
                   </div>
-                </a>
+                </Link>
               </article>
             ))}
           </div>

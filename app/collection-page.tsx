@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "./site-chrome";
+import { siteAsset } from "./site-path";
 
 export type CollectionItem = {
   title: string;
@@ -37,9 +39,9 @@ export function CollectionPage({
       <main id="main">
         <section className="collection-hero" id="top">
           <div className="collection-title">
-            <a className="back-link" href="/#works">
+            <Link className="back-link" href="/#works">
               <span aria-hidden="true">←</span> 返回全部板块
-            </a>
+            </Link>
             <p className="hero-kicker">{name}板块</p>
             <h1>{thesis}</h1>
           </div>
@@ -76,7 +78,7 @@ export function CollectionPage({
                   className={`collection-image ${item.imageClassName ?? ""}`}
                 >
                   <Image
-                    src={item.image}
+                    src={siteAsset(item.image)}
                     alt={item.alt}
                     width={item.imageWidth ?? 735}
                     height={item.imageHeight ?? 480}
@@ -108,9 +110,9 @@ export function CollectionPage({
           <h2>{futureTitle}</h2>
           <div>
             <p>{futureCopy}</p>
-            <a className="text-link" href="/#writing">
+            <Link className="text-link" href="/#writing">
               看笔记与评论计划 <span aria-hidden="true">↘</span>
-            </a>
+            </Link>
           </div>
         </section>
       </main>

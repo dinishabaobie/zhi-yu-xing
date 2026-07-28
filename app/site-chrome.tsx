@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 
 const navigation = [
@@ -16,16 +17,16 @@ export function SiteHeader() {
       </a>
 
       <header className="site-header">
-        <a className="wordmark" href="/" aria-label="知与行，返回首页">
+        <Link className="wordmark" href="/" aria-label="知与行，返回首页">
           <span className="wordmark-mark" aria-hidden="true" />
           知与行
-        </a>
+        </Link>
 
         <nav className="desktop-nav" aria-label="主要导航">
           {navigation.map((item) => (
-            <a href={item.href} key={item.href}>
+            <Link href={item.href} key={item.href}>
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -35,9 +36,9 @@ export function SiteHeader() {
             <summary>菜单</summary>
             <nav aria-label="移动端导航">
               {navigation.map((item) => (
-                <a href={item.href} key={item.href}>
+                <Link href={item.href} key={item.href}>
                   {item.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </details>
@@ -50,10 +51,10 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <a className="wordmark footer-wordmark" href="/">
+      <Link className="wordmark footer-wordmark" href="/">
         <span className="wordmark-mark" aria-hidden="true" />
         知与行
-      </a>
+      </Link>
       <p>游戏、工作、知识与持续写作。</p>
       <a className="footer-top" href="#top">
         回到页首 <span aria-hidden="true">↑</span>

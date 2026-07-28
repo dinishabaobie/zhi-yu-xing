@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteAsset } from "./site-path";
 
 export const metadata: Metadata = {
   title: {
@@ -9,8 +10,8 @@ export const metadata: Metadata = {
   description:
     "游戏、工作与知识三个板块，以及持续更新的笔记与热点点评。",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: siteAsset("/favicon.svg"),
+    shortcut: siteAsset("/favicon.svg"),
   },
   openGraph: {
     title: "知与行｜个人知识",
