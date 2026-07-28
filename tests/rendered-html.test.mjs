@@ -49,6 +49,7 @@ test("server-renders the personal knowledge portfolio", async () => {
   assert.match(html, /href="\/work"/);
   assert.match(html, /work\.jpg/);
   assert.match(html, /href="\/knowledge"/);
+  assert.match(html, /knowledge\.jpg/);
   assert.match(html, /热点点评/);
   assert.match(html, /data-design-contract/);
   assert.doesNotMatch(html, /dinishabaobie\.github\.io/);

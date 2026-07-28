@@ -41,12 +41,10 @@ const portals = [
     kind: "板块三",
     description:
       "从逻辑学到科学、技术与文明，建立一张持续扩展的学科索引。",
-    image: "/logic.jpg",
-    alt: "铅笔、镇纸与写有几何证明和逻辑符号的纸张",
-    width: 735,
-    height: 480,
-    secondaryImage: "/science.jpg",
-    secondaryAlt: "实验玻璃器皿、三棱镜与培养皿中的植物标本",
+    image: "/knowledge.jpg",
+    alt: "人物站在星空与发光星座下，远处有环形轨道与悬浮建筑",
+    width: 2400,
+    height: 1244,
     className: "project project-knowledge",
     href: "/knowledge",
   },
@@ -125,42 +123,21 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
                   href={portal.href}
                   aria-label={`进入${portal.title}板块`}
                 >
-                  {"secondaryImage" in portal ? (
-                    <div className="project-image project-image-pair">
-                      <div>
-                        <Image
-                          src={portal.image}
-                          alt={portal.alt}
-                          width={portal.width}
-                          height={portal.height}
-                          sizes="(max-width: 767px) 50vw, 36vw"
-                        />
-                      </div>
-                      <div>
-                        <Image
-                          src={portal.secondaryImage}
-                          alt={portal.secondaryAlt}
-                          width={735}
-                          height={480}
-                          sizes="(max-width: 767px) 50vw, 36vw"
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="project-image">
-                      <Image
-                        src={portal.image}
-                        alt={portal.alt}
-                        width={portal.width}
-                        height={portal.height}
-                        sizes={
-                          portal.id === "games"
-                            ? "(max-width: 767px) 100vw, 58vw"
+                  <div className="project-image">
+                    <Image
+                      src={portal.image}
+                      alt={portal.alt}
+                      width={portal.width}
+                      height={portal.height}
+                      sizes={
+                        portal.id === "games"
+                          ? "(max-width: 767px) 100vw, 58vw"
+                          : portal.id === "knowledge"
+                            ? "(max-width: 767px) 100vw, 82vw"
                             : "(max-width: 767px) 100vw, 40vw"
-                        }
-                      />
-                    </div>
-                  )}
+                      }
+                    />
+                  </div>
                   <div className="project-copy">
                     <div>
                       <p className="project-kind">{portal.kind}</p>

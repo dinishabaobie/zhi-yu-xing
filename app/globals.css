@@ -494,18 +494,8 @@ img {
   aspect-ratio: 2400 / 1221;
 }
 
-.project-image-pair {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 2px;
-  aspect-ratio: 16 / 7;
-  background: var(--line-strong);
-}
-
-.project-image-pair > div {
-  position: relative;
-  min-width: 0;
-  overflow: hidden;
+.project-knowledge .project-image {
+  aspect-ratio: 2400 / 1244;
 }
 
 .project-image img {
@@ -1133,10 +1123,6 @@ a.project-entry .project-status {
 
   .project-work .project-image {
     aspect-ratio: 735 / 480;
-  }
-
-  .project-image-pair {
-    aspect-ratio: 16 / 9;
   }
 
   .project-copy,
