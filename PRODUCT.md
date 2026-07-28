@@ -28,7 +28,8 @@ web
 - 后续会增加更多学科。
 - 后续会增加笔记与热点点评。
 - 已发现逻辑学与“科学、技术与文明”的正式发布网址。
-- “旅途愉快”和“电工”的正式链接、四个专题的真实截图、作者姓名与社交联系方式尚未提供，本版不得虚构。
+- 已从用户的 GitHub 仓库确认“旅途愉快”与“电工”的正式发布网址。
+- 四个专题的真实截图、作者姓名与社交联系方式尚未提供，本版不得虚构。
 
 ## Brand Commitments
 
@@ -36,6 +37,8 @@ web
 
 ## Evidence on Hand
 
+- 旅途愉快：https://dinishabaobie.github.io/wuwa-bon-voyage/
+- 电工：https://dinishabaobie.github.io/electrician-simulator/
 - 逻辑学：https://logic-field-guide.you-know.chatgpt.site
 - 科学、技术与文明：https://science-civilization-atlas.you-know.chatgpt.site
 - 目前没有四个专题的真实截图、标志、案例数据、客户背书或商业指标，后续设计不得虚构这些事实。

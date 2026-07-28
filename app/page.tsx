@@ -12,24 +12,24 @@ const projects = [
   {
     id: "travel",
     title: "旅途愉快",
-    kind: "旅行专题",
+    kind: "鸣潮专题",
     description:
-      "把目的地还给过程。记录出发、在路上，以及回来之后仍然留下的东西。",
+      "借黑海岸与泰缇斯终端的视角，整理角色档案、剧情解析、版本记录与索拉里斯纪年。",
     image: "/travel.jpg",
     alt: "列车窗外的山与公路，窗边摊开一张地图",
     className: "project project-travel",
-    href: null,
+    href: "https://dinishabaobie.github.io/wuwa-bon-voyage/",
   },
   {
     id: "electrical",
     title: "电工",
-    kind: "技术专题",
+    kind: "学习工具",
     description:
-      "从工具、安全和基本原理出发，把抽象电路接回真实的动手实践。",
+      "拖拽元件、自由接线并运行电路，在单灯单控、接触器点动与自锁练习中理解通断逻辑。",
     image: "/electrical.jpg",
     alt: "铜线、指针仪表与电气元件整齐放在灰色工作台上",
     className: "project project-electrical",
-    href: null,
+    href: "https://dinishabaobie.github.io/electrician-simulator/",
   },
   {
     id: "logic",
@@ -249,7 +249,7 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
               这是一个长期维护的个人入口。作品先被看见，笔记留下学习的过程，评论负责把当下的问题说清楚。
             </p>
             <p>
-              下一步是接入“旅途愉快”和“电工”的正式网址，再加入第一批笔记和热点点评。
+              下一步是加入第一批笔记和热点点评，并继续扩展更多学科。
             </p>
           </div>
         </section>

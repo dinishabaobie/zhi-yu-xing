@@ -35,6 +35,8 @@ test("server-renders the personal knowledge portfolio", async () => {
   assert.match(html, /电工/);
   assert.match(html, /逻辑学/);
   assert.match(html, /科学/);
+  assert.match(html, /dinishabaobie\.github\.io\/wuwa-bon-voyage\//);
+  assert.match(html, /dinishabaobie\.github\.io\/electrician-simulator\//);
   assert.match(html, /热点点评/);
   assert.match(html, /data-design-contract/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
