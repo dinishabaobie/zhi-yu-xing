@@ -7,7 +7,7 @@ related_targets: ["app/layout.tsx","app/globals.css","app/theme-toggle.tsx"]
 
 # 首页
 
-- 范围：个人知识与作品入口首页
+- 范围：个人知识首页
 - 模式：Experience
 - 读者：想了解作者作品、学习路径与当下观点的人
 - 主要任务：快速理解站点的范围，并选择游戏、工作或知识板块继续浏览

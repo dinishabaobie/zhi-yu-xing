@@ -3,7 +3,7 @@ import Image from "next/image";
 import { SiteFooter, SiteHeader } from "./site-chrome";
 
 export const metadata: Metadata = {
-  title: "个人知识与作品入口",
+  title: "个人知识",
   description:
     "游戏、工作与知识三个板块，以及持续更新的笔记与热点点评。",
 };
@@ -73,7 +73,7 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
       <main id="main">
         <section className="hero" id="top" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="hero-kicker">个人知识与作品入口</p>
+            <p className="hero-kicker">个人知识</p>
             <h1 className="hero-quote" id="hero-title">
               <span>小时候家里穷用不起</span>
               <span>GPT也用不起Kimi</span>

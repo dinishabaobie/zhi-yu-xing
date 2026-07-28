@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
   },
   openGraph: {
-    title: "知与行｜个人知识与作品入口",
+    title: "知与行｜个人知识",
     description:
       "游戏、工作与知识三个板块，以及持续更新的笔记与热点点评。",
     type: "website",
