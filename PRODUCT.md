@@ -43,8 +43,8 @@ web
 
 - 旅途愉快：https://dinishabaobie.github.io/wuwa-bon-voyage/
 - 电工：https://dinishabaobie.github.io/electrician-simulator/
-- 逻辑学：https://logic-field-guide.you-know.chatgpt.site
-- 科学、技术与文明：https://science-civilization-atlas.you-know.chatgpt.site
+- 逻辑学：https://dinishabaobie.github.io/logic-field-guide/
+- 科学、技术与文明：https://dinishabaobie.github.io/science-civilization-atlas/
 - 目前没有四个专题的真实截图、标志、案例数据、客户背书或商业指标，后续设计不得虚构这些事实。
 
 ## Product Principles

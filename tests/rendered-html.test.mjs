@@ -87,11 +87,15 @@ test("groups the existing sites into game, work, and knowledge collections", asy
   assert.match(knowledgeHtml, /知识板块/);
   assert.match(knowledgeHtml, /逻辑学/);
   assert.match(knowledgeHtml, /科学、技术与文明/);
-  assert.match(knowledgeHtml, /logic-field-guide\.you-know\.chatgpt\.site/);
   assert.match(
     knowledgeHtml,
-    /science-civilization-atlas\.you-know\.chatgpt\.site/,
+    /dinishabaobie\.github\.io\/logic-field-guide\//,
   );
+  assert.match(
+    knowledgeHtml,
+    /dinishabaobie\.github\.io\/science-civilization-atlas\//,
+  );
+  assert.doesNotMatch(knowledgeHtml, /you-know\.chatgpt\.site/);
 });
 
 test("ships the authored visual system and removes the starter preview", async () => {

@@ -20,7 +20,7 @@ export default function KnowledgePage() {
             "拆开概念、命题与推理，判断一句话究竟能推出什么，不能推出什么。",
           image: "/logic.jpg",
           alt: "铅笔、镇纸与写有几何证明和逻辑符号的纸张",
-          href: "https://logic-field-guide.you-know.chatgpt.site",
+          href: "https://dinishabaobie.github.io/logic-field-guide/",
         },
         {
           title: "科学、技术与文明",
@@ -29,7 +29,7 @@ export default function KnowledgePage() {
             "从观察、实验与证据出发，理解知识怎样建立，也理解它的边界。",
           image: "/science.jpg",
           alt: "实验玻璃器皿、三棱镜与培养皿中的植物标本",
-          href: "https://science-civilization-atlas.you-know.chatgpt.site",
+          href: "https://dinishabaobie.github.io/science-civilization-atlas/",
         },
       ]}
       futureTitle="学科会增加，判断的方法会彼此照亮。"
