@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-28T11:58:51Z",
+  "title": "Design System: 知与行",
+  "extensions": {
+    "colorMeta": {
+      "page-light": {
+        "role": "neutral",
+        "displayName": "冷银纸",
+        "canonical": "#ecefeb"
+      },
+      "surface-light": {
+        "role": "neutral",
+        "displayName": "雾白档案面",
+        "canonical": "#f7f8f4"
+      },
+      "surface-strong-light": {
+        "role": "neutral",
+        "displayName": "压暗银灰",
+        "canonical": "#dfe3df"
+      },
+      "ink-light": {
+        "role": "neutral",
+        "displayName": "墨黑",
+        "canonical": "#141715"
+      },
+      "ink-soft-light": {
+        "role": "neutral",
+        "displayName": "铅灰",
+        "canonical": "#555c57"
+      },
+      "line-light": {
+        "role": "neutral",
+        "displayName": "淡墨分隔",
+        "canonical": "rgb(20 23 21 / 16%)"
+      },
+      "line-strong-light": {
+        "role": "neutral",
+        "displayName": "强墨分隔",
+        "canonical": "rgb(20 23 21 / 34%)"
+      },
+      "accent-light": {
+        "role": "primary",
+        "displayName": "档案朱红",
+        "canonical": "#d15335"
+      },
+      "accent-ink-light": {
+        "role": "neutral",
+        "displayName": "朱红面墨字",
+        "canonical": "#0f100e"
+      },
+      "header-light": {
+        "role": "neutral",
+        "displayName": "透银页眉",
+        "canonical": "rgb(236 239 235 / 86%)"
+      },
+      "page-dark": {
+        "role": "neutral",
+        "displayName": "夜墨",
+        "canonical": "#111412"
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "深绿黑档案面",
+        "canonical": "#191d1a"
+      },
+      "surface-strong-dark": {
+        "role": "neutral",
+        "displayName": "暗苔灰",
+        "canonical": "#272d29"
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "月白",
+        "canonical": "#edf0eb"
+      },
+      "ink-soft-dark": {
+        "role": "neutral",
+        "displayName": "雾银",
+        "canonical": "#adb5af"
+      },
+      "line-dark": {
+        "role": "neutral",
+        "displayName": "夜色淡分隔",
+        "canonical": "rgb(237 240 235 / 15%)"
+      },
+      "line-strong-dark": {
+        "role": "neutral",
+        "displayName": "夜色强分隔",
+        "canonical": "rgb(237 240 235 / 34%)"
+      },
+      "accent-dark": {
+        "role": "primary",
+        "displayName": "夜间亮朱红",
+        "canonical": "#df6748"
+      },
+      "accent-ink-dark": {
+        "role": "neutral",
+        "displayName": "夜间朱红面墨字",
+        "canonical": "#17110f"
+      },
+      "header-dark": {
+        "role": "neutral",
+        "displayName": "透夜夜眉",
+        "canonical": "rgb(17 20 18 / 86%)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "首屏宣言",
+        "purpose": "首屏两行大尺度中文陈述。"
+      },
+      "headline": {
+        "displayName": "章节标题",
+        "purpose": "作品、写作与关于区的主标题。"
+      },
+      "title": {
+        "displayName": "专题标题",
+        "purpose": "专题名称与写作索引标题。"
+      },
+      "body": {
+        "displayName": "正文",
+        "purpose": "项目说明、简介与长期写作说明。"
+      },
+      "label": {
+        "displayName": "档案标签",
+        "purpose": "导航、分区标记、类型与状态。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "hero-ambient-light",
+        "value": "0 26px 70px rgb(43 49 45 / 13%)",
+        "purpose": "浅色主题的首屏摄影与移动导航。"
+      },
+      {
+        "name": "hero-ambient-dark",
+        "value": "0 28px 76px rgb(0 0 0 / 29%)",
+        "purpose": "深色主题的首屏摄影与移动导航。"
+      },
+      {
+        "name": "project-image-light",
+        "value": "0 18px 50px rgb(43 49 45 / 10%)",
+        "purpose": "轻抬项目摄影，不包围项目说明。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-state",
+        "value": "180ms ease",
+        "purpose": "按钮、主题切换和菜单触发器的颜色与按压反馈。"
+      },
+      {
+        "name": "link-underline",
+        "value": "220ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "导航与文本链接的一像素下划线展开。"
+      },
+      {
+        "name": "project-image",
+        "value": "600ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "项目条目悬停或聚焦时的轻微放大与饱和度变化。"
+      },
+      {
+        "name": "hero-copy-enter",
+        "value": "720ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "首屏文字分层进入，后续子项依次延迟 70ms、130ms、190ms。"
+      },
+      {
+        "name": "hero-visual-enter",
+        "value": "980ms 100ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "首屏四联摄影从右侧揭示并消除模糊。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1024px"
+      },
+      {
+        "name": "mobile",
+        "value": "767px"
+      },
+      {
+        "name": "narrow-mobile",
+        "value": "390px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "朱红胶囊主行动，在悬停或键盘聚焦时反转为墨色。",
+      "html": "<a class=\"ds-button-primary\" href=\"#works\">浏览专题</a>",
+      "css": ".ds-button-primary { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 22px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-family: var(--font-body); font-weight: 650; text-decoration: none; white-space: nowrap; transition: transform 180ms ease, background-color 180ms ease, color 180ms ease; } .ds-button-primary:hover, .ds-button-primary:focus-visible { background: var(--ink); color: var(--page); } .ds-button-primary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; } .ds-button-primary:active { transform: translateY(1px) scale(0.98); }"
+    },
+    {
+      "name": "Editorial Text Link",
+      "kind": "button",
+      "refersTo": "button-primary-hover",
+      "description": "带方向箭头与横线展开反馈的次级入口。",
+      "html": "<a class=\"ds-text-link\" href=\"#writing\">看接下来的内容 <span aria-hidden=\"true\">↘</span></a>",
+      "css": ".ds-text-link { position: relative; display: inline-flex; min-height: 44px; align-items: center; gap: 8px; color: var(--ink); font-family: var(--font-body); font-weight: 590; text-decoration: none; } .ds-text-link::after { position: absolute; right: 0; bottom: 4px; left: 0; height: 1px; background: currentColor; content: \"\"; transform: scaleX(0); transform-origin: right; transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-text-link:hover::after, .ds-text-link:focus-visible::after { transform: scaleX(1); transform-origin: left; } .ds-text-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "button",
+      "refersTo": "theme-toggle",
+      "description": "以“明/暗”文字表示主题环境的圆形描边控制。",
+      "html": "<button class=\"ds-theme-toggle\" type=\"button\" aria-label=\"切换到深色主题\"><span aria-hidden=\"true\">明</span></button>",
+      "css": ".ds-theme-toggle { display: grid; min-width: 44px; height: 44px; place-items: center; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--ink); font-family: var(--font-body); font-size: 13px; cursor: pointer; transition: background-color 180ms ease, color 180ms ease, transform 180ms ease; } .ds-theme-toggle:hover, .ds-theme-toggle:focus-visible { background: var(--ink); color: var(--page); } .ds-theme-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; } .ds-theme-toggle:active { transform: translateY(1px) scale(0.98); }"
+    },
+    {
+      "name": "Desktop Navigation",
+      "kind": "nav",
+      "description": "14px 铅灰导航，以方向明确的细下划线表达悬停与焦点。",
+      "html": "<nav class=\"ds-nav\" aria-label=\"主要导航\"><a href=\"#works\">专题</a><a href=\"#writing\">笔记与评论</a><a href=\"#about\">关于</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 30px; color: var(--ink-soft); font-family: var(--font-body); font-size: 14px; } .ds-nav a { position: relative; color: inherit; text-decoration: none; } .ds-nav a::after { position: absolute; right: 0; bottom: -4px; left: 0; height: 1px; background: currentColor; content: \"\"; transform: scaleX(0); transform-origin: right; transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav a:hover::after, .ds-nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; } .ds-nav a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }"
+    },
+    {
+      "name": "Linked Project Entry",
+      "kind": "card",
+      "refersTo": "project-media",
+      "description": "摄影优先的可点击专题条目；图像保留 735×480 真实尺寸并绝对铺满响应式画幅，边线、字号和状态承担说明结构。",
+      "html": "<article class=\"ds-project\"><a class=\"ds-project-entry\" href=\"https://logic-field-guide.you-know.chatgpt.site\" target=\"_blank\" rel=\"noreferrer\"><div class=\"ds-project-image\"><img src=\"/logic.jpg\" width=\"735\" height=\"480\" alt=\"铅笔、镇纸与写有几何证明和逻辑符号的纸张\"></div><div class=\"ds-project-copy\"><div><p class=\"ds-project-kind\">学科专题</p><h3>逻辑学</h3></div><p>拆开概念、命题与推理，判断一句话究竟能推出什么，不能推出什么。</p><span class=\"ds-project-status\">打开专题 <span aria-hidden=\"true\">↗</span></span></div></a></article>",
+      "css": ".ds-project-entry { display: block; color: inherit; text-decoration: none; } .ds-project-image { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius); background: var(--surface-strong); box-shadow: 0 18px 50px rgb(43 49 45 / 10%); } .ds-project-image img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1), filter 600ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-project:hover .ds-project-image img, .ds-project:focus-within .ds-project-image img { filter: saturate(1.06); transform: scale(1.025); } .ds-project-copy { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: start; margin-top: 18px; padding-top: 20px; border-top: 1px solid var(--line-strong); font-family: var(--font-body); } .ds-project-kind { margin: 0 0 4px; color: var(--ink-soft); font-size: 12px; } .ds-project h3 { margin: 0; font-family: var(--font-display); font-size: clamp(27px, 2.4vw, 40px); font-weight: 590; letter-spacing: -0.035em; line-height: 1.1; } .ds-project-copy > p { margin: 1px 0 0; color: var(--ink-soft); line-height: 1.6; } .ds-project-status { display: inline-flex; width: fit-content; align-items: center; gap: 5px; padding-bottom: 2px; border-bottom: 1px solid var(--line-strong); color: var(--ink); font-size: 12px; } .ds-project-entry:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }"
+    },
+    {
+      "name": "Writing Index Panel",
+      "kind": "custom",
+      "refersTo": "writing-panel",
+      "description": "整块朱红签名面板，把未来的笔记、点评与更多学科组织成档案索引。",
+      "html": "<section class=\"ds-writing\"><div class=\"ds-writing-lead\"><p>接下来</p><h2>把学习过程与当下判断也留下来。</h2></div><div class=\"ds-writing-index\"><article><span>笔记</span><h3>学到哪里，整理到哪里</h3><p>保存正在学习的概念、问题、方法与参考资料。</p></article><article><span>热点点评</span><h3>先核对事实，再给出判断</h3><p>拆分事实、解释与立场，让观点可以被检查和修正。</p></article></div></section>",
+      "css": ".ds-writing { display: grid; grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr); gap: clamp(48px, 8vw, 120px); padding: clamp(72px, 8vw, 112px); border-radius: var(--radius); background: var(--accent); color: var(--accent-ink); font-family: var(--font-body); } .ds-writing-lead > p { margin: 0 0 22px; font-size: 13px; font-weight: 650; } .ds-writing-lead h2 { margin: 0; font-family: var(--font-display); font-size: clamp(40px, 4.6vw, 68px); font-weight: 560; letter-spacing: -0.035em; line-height: 1.06; } .ds-writing-index { border-top: 1px solid rgb(23 19 17 / 32%); } .ds-writing-index article { display: grid; grid-template-columns: 108px 1fr; gap: 18px; padding: 24px 0 26px; border-bottom: 1px solid rgb(23 19 17 / 32%); } .ds-writing-index article > span { grid-row: 1 / span 2; font-size: 13px; font-weight: 680; } .ds-writing-index h3 { margin: 0; font-family: var(--font-display); font-size: clamp(22px, 2vw, 30px); font-weight: 610; letter-spacing: -0.025em; line-height: 1.2; } .ds-writing-index p { margin: 8px 0 0; line-height: 1.6; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "知识索引桌",
+    "overview": "“知与行”把个人网站处理成一张会持续扩展的知识索引桌：冷银灰像档案纸面，墨色文字负责秩序，朱红负责定位关键行动与正在生长的内容。摄影以接触印样的方式承担首要证据，大尺度中文排版和非对称编排让旅行、工程、逻辑与科学共享一个世界，但不被压成同一种卡片。\n\n系统整体宽松、安静、带有编辑感。视觉深度来自少量柔和阴影、半透明粘性页眉、细线框架与前后错位，不依赖高饱和色堆叠。浅色和深色主题共用同一套语义角色；移动端保留完整内容与视觉表达，同时把桌面索引收束为单列。",
+    "keyCharacteristics": [
+      "冷银灰纸面、墨色文字与单一朱红强调。",
+      "四联摄影、档案标签、细线与大尺度中文标题。",
+      "宽松留白和非对称 12 栏作品索引。",
+      "浅深双主题，以及尊重减少动态与减少透明度偏好的降级路径。"
+    ],
+    "rules": [
+      {
+        "name": "The One Vermilion Rule",
+        "body": "朱红是唯一强调色；它用于行动、定位、焦点和关键内容面，不再引入第二种竞争性强调色。",
+        "section": "colors"
+      },
+      {
+        "name": "The Semantic Theme Rule",
+        "body": "浅色与深色主题通过同名语义变量切换，组件不得把某一主题的表面色直接写死在局部样式中。",
+        "section": "colors"
+      },
+      {
+        "name": "The Large Chinese Statement Rule",
+        "body": "主要章节靠大尺度中文陈述建立层级，说明文字只帮助选择，不与标题争夺注意力。",
+        "section": "typography"
+      },
+      {
+        "name": "The Asymmetric Index Rule",
+        "body": "宽屏项目必须保留不同跨栏、纵向错位和横竖画幅的索引关系；移动端才统一为单列与横向画幅。",
+        "section": "layout"
+      },
+      {
+        "name": "The Evidence Lift Rule",
+        "body": "摄影和临时浮层可以获得柔和抬升，普通文字区与项目说明保持平面，以细线和留白分层。",
+        "section": "elevation"
+      },
+      {
+        "name": "The Selective Radius Rule",
+        "body": "圆角属于图像、浮层和可按压控件；文本区与版面分区优先使用直线、留白和开放边界。",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do 使用语义颜色变量保持浅深主题一一对应。",
+      "Do 保留朱红在主行动、焦点、品牌标记和写作面板中的统一角色。",
+      "Do 在桌面保持作品跨栏、画幅和纵向错位，在移动端再收束为单列。",
+      "Do 为动态提供减少动态降级，为模糊页眉提供减少透明度降级。"
+    ],
+    "donts": [
+      "Don't 引入蓝色或其他竞争性强调色，破坏单一朱红系统。",
+      "Don't 把四个专题改成等宽、等高、等起点的通用卡片网格。",
+      "Don't 给每个文本容器都加背景、圆角和阴影；开放版面与细线是主要结构。",
+      "Don't 用等宽技术字体或单一职业视觉语言限制旅行、工程、逻辑与科学的共同入口。"
+    ]
+  }
+}
