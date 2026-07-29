@@ -265,6 +265,11 @@ test("ships the authored visual system and removes the starter preview", async (
   assert.match(layout, /lang="zh-CN"/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /data-theme="dark"/);
+  assert.match(css, /@media \(min-width: 1440px\)/);
+  assert.match(
+    css,
+    /grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/,
+  );
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await assert.rejects(
     access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)),
