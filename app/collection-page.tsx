@@ -13,6 +13,7 @@ export type CollectionItem = {
   imageHeight?: number;
   imageClassName?: string;
   href: string;
+  external?: boolean;
 };
 
 type CollectionPageProps = {
@@ -65,15 +66,11 @@ export function CollectionPage({
           }`}
           aria-label={`${name}板块内容`}
         >
-          {items.map((item, index) => (
-            <article className="collection-item reveal" key={item.title}>
-              <a
-                className="collection-entry"
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`打开${item.title}专题（新窗口）`}
-              >
+          {items.map((item, index) => {
+            const isExternal =
+              item.external ?? /^https?:\/\//.test(item.href);
+            const entry = (
+              <>
                 <div
                   className={`collection-image ${item.imageClassName ?? ""}`}
                 >
@@ -97,12 +94,37 @@ export function CollectionPage({
                   </div>
                   <p>{item.description}</p>
                   <span className="project-status">
-                    打开专题 <span aria-hidden="true">↗</span>
+                    进入专题{" "}
+                    <span aria-hidden="true">{isExternal ? "↗" : "→"}</span>
                   </span>
                 </div>
-              </a>
-            </article>
-          ))}
+              </>
+            );
+
+            return (
+              <article className="collection-item reveal" key={item.title}>
+                {isExternal ? (
+                  <a
+                    className="collection-entry"
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`打开${item.title}专题（新窗口）`}
+                  >
+                    {entry}
+                  </a>
+                ) : (
+                  <Link
+                    className="collection-entry"
+                    href={item.href}
+                    aria-label={`进入${item.title}专题`}
+                  >
+                    {entry}
+                  </Link>
+                )}
+              </article>
+            );
+          })}
         </section>
 
         <section className="collection-future reveal">

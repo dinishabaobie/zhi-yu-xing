@@ -93,15 +93,44 @@ test("groups the existing sites into game, work, and knowledge collections", asy
   assert.match(knowledgeHtml, /知识板块/);
   assert.match(knowledgeHtml, /逻辑学/);
   assert.match(knowledgeHtml, /科学、技术与文明/);
-  assert.match(
+  assert.match(knowledgeHtml, /href="\/knowledge\/logic"/);
+  assert.match(knowledgeHtml, /href="\/knowledge\/science"/);
+  assert.doesNotMatch(
     knowledgeHtml,
-    /dinishabaobie\.github\.io\/logic-field-guide\//,
-  );
-  assert.match(
-    knowledgeHtml,
-    /dinishabaobie\.github\.io\/science-civilization-atlas\//,
+    /dinishabaobie\.github\.io\/(?:logic-field-guide|science-civilization-atlas)/,
   );
   assert.doesNotMatch(knowledgeHtml, /you-know\.chatgpt\.site/);
+});
+
+test("publishes logic and science as full internal knowledge subjects", async () => {
+  const [logic, science] = await Promise.all([
+    render("/knowledge/logic"),
+    render("/knowledge/science"),
+  ]);
+
+  assert.equal(logic.status, 200);
+  assert.equal(science.status, 200);
+
+  const [logicHtml, scienceHtml] = await Promise.all([
+    logic.text(),
+    science.text(),
+  ]);
+
+  assert.match(logicHtml, /返回知识/);
+  assert.match(logicHtml, /在结论之前/);
+  assert.match(logicHtml, /七关，不是七章目录/);
+  assert.match(logicHtml, /知识地图/);
+  assert.match(logicHtml, /谬误断点/);
+  assert.match(logicHtml, /练习场/);
+  assert.match(logicHtml, /《写给中学生的逻辑学》/);
+
+  assert.match(scienceHtml, /返回知识/);
+  assert.match(scienceHtml, /科学、技术/);
+  assert.match(scienceHtml, /三条轨道上的能力扩张/);
+  assert.match(scienceHtml, /九个历史时代/);
+  assert.match(scienceHtml, /理解知识怎样变成塑造世界的力量/);
+  assert.match(scienceHtml, /技术十六问/);
+  assert.match(scienceHtml, /来源与解释边界/);
 });
 
 test("publishes the social-hotspot index and evidence-led case analysis", async () => {

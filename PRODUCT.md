@@ -8,7 +8,7 @@ web
 
 ## Users
 
-主要读者是希望了解作者作品、学习路径与公共观点的人。他们从一个入口浏览独立专题网站，并在后续持续阅读笔记与热点点评。
+主要读者是希望了解作者作品、学习路径与公共观点的人。他们从一个入口进入主站内的知识专题，并在后续持续阅读笔记与热点点评。游戏与工作项目当前仍链接至独立作品站。
 
 ## Product Purpose
 
@@ -29,11 +29,14 @@ web
 - 用户从 2024 年底开始玩《鸣潮》，“旅途愉快”是由这段游戏经历长出来的专题。
 - 工作板块当前收录“电工”。
 - 知识板块当前收录“逻辑学”与“科学、技术与文明”。
+- 逻辑学与“科学、技术与文明”已迁入主站内部路径，知识入口不再跳转到独立 GitHub Pages 站点。
+- 逻辑学保留七关路径、知识地图、谬误断点、练习场、搜索与来源结构。
+- “科学、技术与文明”保留九时代时间轴、三轨筛选、事件阅读面板与完整理解框架。
 - 社会热点板块当前收录“旭旭宝宝与《功夫女足》争议”，采用证据时间线与分析工作台呈现。
 - 热点分析明确区分原始材料、当事方主张、媒体转述与尚待确认的结论，并保留改判条件。
 - 后续会增加更多游戏、工作项目与学科。
 - 后续会增加个人笔记与更多热点案例。
-- 已发现逻辑学与“科学、技术与文明”的正式发布网址。
+- 已从两个原 GitHub 仓库迁移逻辑学与“科学、技术与文明”的真实内容，原独立站暂时保留作为历史版本。
 - 已从用户的 GitHub 仓库确认“旅途愉快”与“电工”的正式发布网址。
 - 四个专题的真实截图、作者姓名与社交联系方式尚未提供，本版不得虚构。
 
@@ -45,8 +48,10 @@ web
 
 - 旅途愉快：https://dinishabaobie.github.io/wuwa-bon-voyage/
 - 电工：https://dinishabaobie.github.io/electrician-simulator/
-- 逻辑学：https://dinishabaobie.github.io/logic-field-guide/
-- 科学、技术与文明：https://dinishabaobie.github.io/science-civilization-atlas/
+- 逻辑学原独立站：https://dinishabaobie.github.io/logic-field-guide/
+- 科学、技术与文明原独立站：https://dinishabaobie.github.io/science-civilization-atlas/
+- 主站逻辑学路径：/knowledge/logic
+- 主站科学路径：/knowledge/science
 - 目前没有四个专题的真实截图、标志、案例数据、客户背书或商业指标，后续设计不得虚构这些事实。
 
 ## Product Principles

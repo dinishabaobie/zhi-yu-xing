@@ -273,6 +273,75 @@ img {
   background: var(--surface-strong);
 }
 
+.knowledge-subject-bar {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto minmax(180px, 1fr);
+  align-items: center;
+  min-height: 58px;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.subject-back,
+.subject-section-nav a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.subject-back {
+  gap: 8px;
+  width: fit-content;
+  font-weight: 650;
+}
+
+.subject-section-nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  color: var(--ink-soft);
+}
+
+.subject-section-nav a,
+.subject-back {
+  position: relative;
+}
+
+.subject-section-nav a::after,
+.subject-back::after {
+  position: absolute;
+  right: 0;
+  bottom: 7px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 180ms ease;
+}
+
+.subject-section-nav a:hover::after,
+.subject-section-nav a:focus-visible::after,
+.subject-back:hover::after,
+.subject-back:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.subject-location {
+  justify-self: end;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
 .hero,
 .works-section,
 .writing-section,
@@ -1787,6 +1856,20 @@ a.project-entry .project-status {
 
   .mobile-nav {
     display: block;
+  }
+
+  .knowledge-subject-bar {
+    grid-template-columns: 1fr auto;
+    min-height: 54px;
+    padding: 0 16px;
+  }
+
+  .subject-section-nav {
+    display: none;
+  }
+
+  .subject-location {
+    font-size: 11px;
   }
 
   .hero {
