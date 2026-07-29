@@ -153,7 +153,17 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
 
   assert.match(caseHtml, /证据时间线/);
   assert.match(caseHtml, /E1/);
-  assert.match(caseHtml, /用户笔记转录，待核原视频/);
+  assert.match(caseHtml, /四段原视频已核实/);
+  assert.doesNotMatch(
+    caseHtml,
+    /用户笔记转录，待核原视频|当事方自述，待核原视频/,
+  );
+  assert.match(caseHtml, /包括有了互联网之后，从这个电脑上，也看/);
+  assert.match(caseHtml, /让暴风雨来得更猛烈一些就行/);
+  assert.match(caseHtml, /大家不要被他们给乱带了节奏啊/);
+  assert.match(caseHtml, /清醒的，充满正义感的人/);
+  assert.match(caseHtml, /case-relation-bridge/);
+  assert.match(caseHtml, /证据约束判断/);
   assert.match(caseHtml, /判断账本/);
   assert.match(caseHtml, /用逻辑学的七关检查/);
   assert.match(caseHtml, /群体心理的适用门槛/);

@@ -956,8 +956,11 @@ a.project-entry .project-status {
 
 .case-workbench {
   display: grid;
-  grid-template-columns: minmax(390px, 0.84fr) minmax(0, 1.16fr);
-  gap: clamp(48px, 7vw, 104px);
+  grid-template-columns:
+    minmax(390px, 0.84fr)
+    clamp(48px, 7vw, 104px)
+    minmax(0, 1.16fr);
+  gap: 0;
   align-items: start;
   padding-top: clamp(96px, 12vw, 170px);
 }
@@ -1083,6 +1086,47 @@ a.project-entry .project-status {
   border-bottom: 1px solid var(--line-strong);
   color: var(--ink);
   font-size: 11px;
+}
+
+.case-relation-bridge {
+  position: sticky;
+  top: calc(var(--header-height) + 28px);
+  align-self: start;
+  height: 260px;
+  pointer-events: none;
+}
+
+.case-relation-bridge svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.case-relation-bridge path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-opacity: 0.86;
+  vector-effect: non-scaling-stroke;
+}
+
+.case-relation-bridge span {
+  position: absolute;
+  top: 108px;
+  left: 50%;
+  width: max-content;
+  padding: 3px 7px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--page);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  transform: translateX(-50%);
 }
 
 .case-analysis {
@@ -1777,8 +1821,11 @@ a.project-entry .project-status {
   }
 
   .case-workbench {
-    grid-template-columns: minmax(330px, 0.72fr) minmax(0, 1.28fr);
-    gap: 46px;
+    grid-template-columns:
+      minmax(330px, 0.72fr)
+      46px
+      minmax(0, 1.28fr);
+    gap: 0;
   }
 
   .hotspots-index-hero,
@@ -2009,6 +2056,10 @@ a.project-entry .project-status {
     grid-template-columns: 1fr;
     gap: 96px;
     padding-top: 96px;
+  }
+
+  .case-relation-bridge {
+    display: none;
   }
 
   .case-evidence-sticky {
