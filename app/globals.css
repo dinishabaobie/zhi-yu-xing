@@ -1147,7 +1147,6 @@ a.project-entry .project-status {
 .analysis-node-meta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 18px;
 }
 
@@ -1162,6 +1161,16 @@ a.project-entry .project-status {
   border-radius: 999px;
   color: var(--ink);
   font-weight: 650;
+}
+
+.analysis-node-meta .analysis-node-finding {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+.analysis-node-meta span:last-child {
+  margin-left: auto;
+  text-align: right;
 }
 
 .analysis-conditional .analysis-node-meta span:first-child,

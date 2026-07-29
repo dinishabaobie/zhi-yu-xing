@@ -154,7 +154,7 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
   assert.match(caseHtml, /逐日原文与深度解析/);
   assert.match(caseHtml, /四段完整原话，四个时间截面/);
   assert.match(caseHtml, /后来发生的事，不能提前成为理由/);
-  assert.match(caseHtml, /16 日只分析 16 日/);
+  assert.match(caseHtml, /16 日只看 16 日/);
   assert.match(caseHtml, /四段原视频已核实/);
   assert.doesNotMatch(
     caseHtml,
@@ -168,19 +168,26 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
   assert.match(caseHtml, /data-relation-id="16-preference"/);
   assert.match(caseHtml, /显示对应判断：个人偏好/);
   assert.match(caseHtml, /分析截止 7 月 16 日/);
-  assert.match(caseHtml, /只使用 7 月 16 日直播原话/);
+  assert.match(caseHtml, /累计使用截至当日的一段材料：仅 7 月 16 日直播原话/);
   assert.match(caseHtml, /分析截止 7 月 18 日/);
-  assert.match(caseHtml, /只使用截至 7 月 18 日已经出现的两段材料/);
+  assert.match(caseHtml, /累计使用 7 月 16、18 日两段材料/);
   assert.match(caseHtml, /分析截止 7 月 19 日/);
-  assert.match(caseHtml, /只使用截至 7 月 19 日已经出现的三段材料/);
+  assert.match(caseHtml, /累计使用 7 月 16、18、19 日三段材料/);
   assert.match(caseHtml, /分析截止 7 月 20 日/);
+  assert.match(caseHtml, /累计对照 7 月 16、18、19、20 日全部四段材料/);
   assert.match(caseHtml, /水军说法的确定度发生了跳跃/);
-  assert.match(caseHtml, /反讽式道歉把论题从理由转成气势/);
-  assert.match(caseHtml, /“正常观众”与“黑粉”不是完整二分/);
+  assert.match(caseHtml, /反讽式道歉把“解释原话”改造成公开反击/);
+  assert.match(caseHtml, /“正常观众”与“黑粉”二分/);
+  assert.match(caseHtml, /旭旭宝宝的错误/);
+  assert.match(caseHtml, /舆论升级点/);
+  assert.match(caseHtml, /回应决策复盘/);
+  assert.match(caseHtml, /四天对照后可确认推理断点/);
+  assert.match(caseHtml, /四段材料展示的都是旭旭宝宝对评论的概括/);
+  assert.doesNotMatch(caseHtml, /但本段只提供/);
   assert.match(caseHtml, /乌合之众：重复与传染/);
   assert.match(caseHtml, /乌合之众：神圣信念边界/);
   assert.match(caseHtml, /暂缓判断/);
-  assert.match(caseHtml, /争议里有四件事，不能捆成一个立场/);
+  assert.match(caseHtml, /两条错误链互相喂养，却不能互相证明/);
   assert.match(caseHtml, /href="\/knowledge\/logic"/);
   assert.match(caseHtml, /data-design-contract/);
   assert.doesNotMatch(caseHtml, /付费水军已经|证实存在付费水军/);
@@ -191,6 +198,7 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
 
   for (const relationId of [
     "16-preference",
+    "16-conflict-frame",
     "16-evaluation",
     "16-consensus",
     "18-choice",
@@ -198,15 +206,22 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
     "18-rhetoric",
     "18-target",
     "18-attack",
+    "18-escalation-vow",
+    "19-counter-mobilize",
     "19-scope",
     "19-boundary",
     "19-coordination",
     "19-water",
+    "19-two-buckets",
     "19-accountability",
+    "19-repair",
     "20-negative",
     "20-boycott",
     "20-symbol",
     "20-certainty",
+    "20-locust",
+    "20-agency",
+    "20-commit",
     "20-camps",
   ]) {
     const matches = caseHtml.match(
