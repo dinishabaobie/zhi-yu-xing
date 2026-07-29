@@ -1,23 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
-export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("light");
+const themeChangeEvent = "zhiyuxing-theme-change";
 
-  useEffect(() => {
-    const current =
-      document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-    setTheme(current);
-  }, []);
+function getTheme(): Theme {
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+}
+
+function subscribeToTheme(onStoreChange: () => void) {
+  window.addEventListener(themeChangeEvent, onStoreChange);
+  return () => window.removeEventListener(themeChangeEvent, onStoreChange);
+}
+
+export function ThemeToggle() {
+  const theme = useSyncExternalStore(subscribeToTheme, getTheme, () => "light");
 
   function toggleTheme() {
     const next: Theme = theme === "light" ? "dark" : "light";
     document.documentElement.dataset.theme = next;
     localStorage.setItem("zhiyuxing-theme", next);
-    setTheme(next);
+    window.dispatchEvent(new Event(themeChangeEvent));
   }
 
   return (

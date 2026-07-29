@@ -5,6 +5,7 @@ const navigation = [
   { href: "/games", label: "游戏" },
   { href: "/work", label: "工作" },
   { href: "/knowledge", label: "知识" },
+  { href: "/hotspots", label: "热点" },
   { href: "/#writing", label: "笔记" },
   { href: "/#about", label: "关于" },
 ];
@@ -55,7 +56,7 @@ export function SiteFooter() {
         <span className="wordmark-mark" aria-hidden="true" />
         知与行
       </Link>
-      <p>游戏、工作、知识与持续写作。</p>
+      <p>游戏、工作、知识、社会热点与持续写作。</p>
       <a className="footer-top" href="#top">
         回到页首 <span aria-hidden="true">↑</span>
       </a>

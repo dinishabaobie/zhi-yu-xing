@@ -41,7 +41,7 @@ test("server-renders the personal knowledge portfolio", async () => {
   assert.match(html, /只能用豆包 听她的唐笑/);
   assert.match(html, /我把它当做贫穷送我的礼物/);
   assert.doesNotMatch(html, /走过的路|想过的问题/);
-  assert.match(html, /三个入口，各有自己的秩序/);
+  assert.match(html, /四个入口，各有自己的秩序/);
   assert.match(html, /《鸣潮》专题/);
   assert.match(html, /2024 年底开始玩/);
   assert.match(html, /href="\/games"/);
@@ -50,9 +50,15 @@ test("server-renders the personal knowledge portfolio", async () => {
   assert.match(html, /work\.jpg/);
   assert.match(html, /href="\/knowledge"/);
   assert.match(html, /knowledge\.jpg/);
+  assert.match(html, /href="\/hotspots"/);
+  assert.match(html, /社会热点/);
+  assert.match(html, /一场观影偏好/);
   assert.match(html, /热点点评/);
   assert.match(html, /data-design-contract/);
-  assert.doesNotMatch(html, /dinishabaobie\.github\.io/);
+  assert.doesNotMatch(
+    html,
+    /dinishabaobie\.github\.io\/(?:wuwa-bon-voyage|electrician-simulator|logic-field-guide|science-civilization-atlas)/,
+  );
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 });
 
@@ -96,6 +102,34 @@ test("groups the existing sites into game, work, and knowledge collections", asy
     /dinishabaobie\.github\.io\/science-civilization-atlas\//,
   );
   assert.doesNotMatch(knowledgeHtml, /you-know\.chatgpt\.site/);
+});
+
+test("publishes the social-hotspot index and evidence-led case analysis", async () => {
+  const [hotspots, casePage] = await Promise.all([
+    render("/hotspots"),
+    render("/hotspots/xuxubaobao"),
+  ]);
+
+  assert.equal(hotspots.status, 200);
+  assert.equal(casePage.status, 200);
+
+  const [hotspotsHtml, caseHtml] = await Promise.all([
+    hotspots.text(),
+    casePage.text(),
+  ]);
+
+  assert.match(hotspotsHtml, /不是急着站队，先让证据归位/);
+  assert.match(hotspotsHtml, /旭旭宝宝与《功夫女足》争议/);
+  assert.match(hotspotsHtml, /href="\/hotspots\/xuxubaobao"/);
+
+  assert.match(caseHtml, /证据时间线/);
+  assert.match(caseHtml, /判断账本/);
+  assert.match(caseHtml, /用逻辑学的七关检查/);
+  assert.match(caseHtml, /群体心理的适用门槛/);
+  assert.match(caseHtml, /暂缓判断/);
+  assert.match(caseHtml, /什么证据会让我改判/);
+  assert.match(caseHtml, /data-design-contract/);
+  assert.doesNotMatch(caseHtml, /付费水军已经|证实存在付费水军/);
 });
 
 test("ships the authored visual system and removes the starter preview", async () => {

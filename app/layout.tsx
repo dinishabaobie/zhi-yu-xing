@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s｜知与行",
   },
   description:
-    "游戏、工作与知识三个板块，以及持续更新的笔记与热点点评。",
+    "游戏、工作、知识与社会热点四个板块，以及持续更新的笔记与判断。",
   icons: {
     icon: siteAsset("/favicon.svg"),
     shortcut: siteAsset("/favicon.svg"),
@@ -16,9 +16,24 @@ export const metadata: Metadata = {
   openGraph: {
     title: "知与行｜个人知识",
     description:
-      "游戏、工作与知识三个板块，以及持续更新的笔记与热点点评。",
+      "游戏、工作、知识与社会热点四个板块，以及持续更新的笔记与判断。",
     type: "website",
     locale: "zh_CN",
+    images: [
+      {
+        url: "https://dinishabaobie.github.io/zhi-yu-xing/og.png",
+        width: 1200,
+        height: 630,
+        alt: "知与行，让证据归位",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "知与行｜个人知识",
+    description:
+      "游戏、工作、知识与社会热点四个板块，以及持续更新的笔记与判断。",
+    images: ["https://dinishabaobie.github.io/zhi-yu-xing/og.png"],
   },
 };
 
