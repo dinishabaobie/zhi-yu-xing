@@ -16,7 +16,6 @@ type ConnectionDiagram = {
 
 type EvidenceConnectionMapProps = {
   labels: Record<string, string>;
-  defaultRelationId: string;
 };
 
 const emptyDiagram: ConnectionDiagram = {
@@ -28,12 +27,27 @@ const emptyDiagram: ConnectionDiagram = {
 
 export function EvidenceConnectionMap({
   labels,
-  defaultRelationId,
 }: EvidenceConnectionMapProps) {
   const layerRef = useRef<HTMLDivElement>(null);
   const pinnedRelationRef = useRef<string | null>(null);
-  const activeRelationRef = useRef(defaultRelationId);
+  const activeRelationRef = useRef<string | null>(null);
   const [diagram, setDiagram] = useState<ConnectionDiagram>(emptyDiagram);
+
+  const clearRelation = useCallback(() => {
+    const layer = layerRef.current;
+    const workbench = layer?.parentElement;
+    if (!workbench) return;
+
+    activeRelationRef.current = null;
+    workbench.classList.remove("is-focusing");
+    workbench
+      .querySelectorAll<HTMLElement>("[data-relation-id]")
+      .forEach((item) => {
+        item.classList.remove("is-related");
+        item.setAttribute("aria-pressed", "false");
+      });
+    setDiagram(emptyDiagram);
+  }, []);
 
   const drawRelation = useCallback(
     (relationId: string) => {
@@ -52,9 +66,10 @@ export function EvidenceConnectionMap({
         item.classList.contains("evidence-quote-anchor"),
       );
       const targets = related.filter((item) =>
-        item.classList.contains("claim-item"),
+        item.classList.contains("analysis-node"),
       );
 
+      workbench.classList.add("is-focusing");
       workbench
         .querySelectorAll<HTMLElement>("[data-relation-id]")
         .forEach((item) => {
@@ -116,8 +131,8 @@ export function EvidenceConnectionMap({
       if (node?.dataset.relationId) drawRelation(node.dataset.relationId);
     };
 
-    const restoreDefault = () => {
-      if (!pinnedRelationRef.current) drawRelation(defaultRelationId);
+    const clearUnpinned = () => {
+      if (!pinnedRelationRef.current) clearRelation();
     };
 
     const togglePinned = (target: EventTarget | null) => {
@@ -127,12 +142,27 @@ export function EvidenceConnectionMap({
 
       pinnedRelationRef.current =
         pinnedRelationRef.current === relationId ? null : relationId;
-      drawRelation(pinnedRelationRef.current ?? defaultRelationId);
+      if (pinnedRelationRef.current) {
+        drawRelation(pinnedRelationRef.current);
+      } else {
+        clearRelation();
+      }
     };
 
     const handlePointerOver = (event: PointerEvent) =>
       showNodeRelation(event.target);
-    const handlePointerLeave = () => restoreDefault();
+    const handlePointerLeave = () => clearUnpinned();
+    const handleFocusIn = (event: FocusEvent) =>
+      showNodeRelation(event.target);
+    const handleFocusOut = (event: FocusEvent) => {
+      if (
+        event.relatedTarget instanceof Node &&
+        workbench.contains(event.relatedTarget)
+      ) {
+        return;
+      }
+      clearUnpinned();
+    };
     const handleClick = (event: MouseEvent) => togglePinned(event.target);
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Enter" && event.key !== " ") return;
@@ -140,13 +170,16 @@ export function EvidenceConnectionMap({
       event.preventDefault();
       togglePinned(event.target);
     };
-    const redraw = () =>
-      drawRelation(
-        pinnedRelationRef.current ?? activeRelationRef.current,
-      );
+    const redraw = () => {
+      const relationId =
+        pinnedRelationRef.current ?? activeRelationRef.current;
+      if (relationId) drawRelation(relationId);
+    };
 
     workbench.addEventListener("pointerover", handlePointerOver);
     workbench.addEventListener("pointerleave", handlePointerLeave);
+    workbench.addEventListener("focusin", handleFocusIn);
+    workbench.addEventListener("focusout", handleFocusOut);
     workbench.addEventListener("click", handleClick);
     workbench.addEventListener("keydown", handleKeyDown);
     window.addEventListener("resize", redraw);
@@ -157,9 +190,7 @@ export function EvidenceConnectionMap({
         : new ResizeObserver(redraw);
     resizeObserver?.observe(workbench);
 
-    const frame = window.requestAnimationFrame(() =>
-      drawRelation(defaultRelationId),
-    );
+    const frame = window.requestAnimationFrame(redraw);
     document.fonts?.ready?.then(redraw);
 
     return () => {
@@ -168,10 +199,12 @@ export function EvidenceConnectionMap({
       window.removeEventListener("resize", redraw);
       workbench.removeEventListener("pointerover", handlePointerOver);
       workbench.removeEventListener("pointerleave", handlePointerLeave);
+      workbench.removeEventListener("focusin", handleFocusIn);
+      workbench.removeEventListener("focusout", handleFocusOut);
       workbench.removeEventListener("click", handleClick);
       workbench.removeEventListener("keydown", handleKeyDown);
     };
-  }, [defaultRelationId, drawRelation]);
+  }, [clearRelation, drawRelation]);
 
   return (
     <div className="case-connection-layer" ref={layerRef} aria-hidden="true">

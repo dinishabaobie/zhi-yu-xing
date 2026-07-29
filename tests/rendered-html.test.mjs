@@ -151,8 +151,10 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
   assert.match(hotspotsHtml, /旭旭宝宝与《功夫女足》争议/);
   assert.match(hotspotsHtml, /href="\/hotspots\/xuxubaobao"/);
 
-  assert.match(caseHtml, /证据时间线/);
-  assert.match(caseHtml, /E1/);
+  assert.match(caseHtml, /逐日原文与深度解析/);
+  assert.match(caseHtml, /四段完整原话，四个时间截面/);
+  assert.match(caseHtml, /后来发生的事，不能提前成为理由/);
+  assert.match(caseHtml, /16 日只分析 16 日/);
   assert.match(caseHtml, /四段原视频已核实/);
   assert.doesNotMatch(
     caseHtml,
@@ -163,16 +165,75 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
   assert.match(caseHtml, /大家不要被他们给乱带了节奏啊/);
   assert.match(caseHtml, /清醒的，充满正义感的人/);
   assert.match(caseHtml, /case-connection-layer/);
-  assert.match(caseHtml, /data-relation-id="personal-choice"/);
-  assert.match(caseHtml, /显示对应判断：个人选择/);
-  assert.match(caseHtml, /判断账本/);
-  assert.match(caseHtml, /用逻辑学的七关检查/);
-  assert.match(caseHtml, /群体心理的适用门槛/);
-  assert.match(caseHtml, /直觉默认错误/);
+  assert.match(caseHtml, /data-relation-id="16-preference"/);
+  assert.match(caseHtml, /显示对应判断：个人偏好/);
+  assert.match(caseHtml, /分析截止 7 月 16 日/);
+  assert.match(caseHtml, /只使用 7 月 16 日直播原话/);
+  assert.match(caseHtml, /分析截止 7 月 18 日/);
+  assert.match(caseHtml, /只使用截至 7 月 18 日已经出现的两段材料/);
+  assert.match(caseHtml, /分析截止 7 月 19 日/);
+  assert.match(caseHtml, /只使用截至 7 月 19 日已经出现的三段材料/);
+  assert.match(caseHtml, /分析截止 7 月 20 日/);
+  assert.match(caseHtml, /水军说法的确定度发生了跳跃/);
+  assert.match(caseHtml, /反讽式道歉把论题从理由转成气势/);
+  assert.match(caseHtml, /“正常观众”与“黑粉”不是完整二分/);
+  assert.match(caseHtml, /乌合之众：重复与传染/);
+  assert.match(caseHtml, /乌合之众：神圣信念边界/);
   assert.match(caseHtml, /暂缓判断/);
-  assert.match(caseHtml, /什么证据会让我改判/);
+  assert.match(caseHtml, /争议里有四件事，不能捆成一个立场/);
+  assert.match(caseHtml, /href="\/knowledge\/logic"/);
   assert.match(caseHtml, /data-design-contract/);
   assert.doesNotMatch(caseHtml, /付费水军已经|证实存在付费水军/);
+  assert.doesNotMatch(
+    caseHtml,
+    /dinishabaobie\.github\.io\/logic-field-guide/,
+  );
+
+  for (const relationId of [
+    "16-preference",
+    "16-evaluation",
+    "16-consensus",
+    "18-choice",
+    "18-friends",
+    "18-rhetoric",
+    "18-target",
+    "18-attack",
+    "19-scope",
+    "19-boundary",
+    "19-coordination",
+    "19-water",
+    "19-accountability",
+    "20-negative",
+    "20-boycott",
+    "20-symbol",
+    "20-certainty",
+    "20-camps",
+  ]) {
+    const matches = caseHtml.match(
+      new RegExp(`data-relation-id="${relationId}"`, "g"),
+    );
+    assert.equal(
+      matches?.length,
+      2,
+      `${relationId} should connect one original quote to one analysis node`,
+    );
+  }
+
+  const day16 = caseHtml.slice(
+    caseHtml.indexOf('id="E1-source-title"'),
+    caseHtml.indexOf('id="E2-source-title"'),
+  );
+  const day18 = caseHtml.slice(
+    caseHtml.indexOf('id="E2-source-title"'),
+    caseHtml.indexOf('id="E3-source-title"'),
+  );
+  const day19 = caseHtml.slice(
+    caseHtml.indexOf('id="E3-source-title"'),
+    caseHtml.indexOf('id="E4-source-title"'),
+  );
+  assert.doesNotMatch(day16, /18 日|19 日|20 日/);
+  assert.doesNotMatch(day18, /19 日|20 日/);
+  assert.doesNotMatch(day19, /20 日/);
 });
 
 test("ships the authored visual system and removes the starter preview", async () => {
