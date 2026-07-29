@@ -162,8 +162,9 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
   assert.match(caseHtml, /让暴风雨来得更猛烈一些就行/);
   assert.match(caseHtml, /大家不要被他们给乱带了节奏啊/);
   assert.match(caseHtml, /清醒的，充满正义感的人/);
-  assert.match(caseHtml, /case-relation-bridge/);
-  assert.match(caseHtml, /证据约束判断/);
+  assert.match(caseHtml, /case-connection-layer/);
+  assert.match(caseHtml, /data-relation-id="personal-choice"/);
+  assert.match(caseHtml, /显示对应判断：个人选择/);
   assert.match(caseHtml, /判断账本/);
   assert.match(caseHtml, /用逻辑学的七关检查/);
   assert.match(caseHtml, /群体心理的适用门槛/);

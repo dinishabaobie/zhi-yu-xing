@@ -955,12 +955,10 @@ a.project-entry .project-status {
 }
 
 .case-workbench {
+  position: relative;
   display: grid;
-  grid-template-columns:
-    minmax(390px, 0.84fr)
-    clamp(48px, 7vw, 104px)
-    minmax(0, 1.16fr);
-  gap: 0;
+  grid-template-columns: minmax(390px, 0.84fr) minmax(0, 1.16fr);
+  gap: clamp(48px, 7vw, 104px);
   align-items: start;
   padding-top: clamp(96px, 12vw, 170px);
 }
@@ -1079,6 +1077,32 @@ a.project-entry .project-status {
   line-height: 1.65;
 }
 
+.evidence-quote-anchor {
+  display: inline;
+  margin: 0;
+  padding: 0 2px;
+  border: 0;
+  border-bottom: 1px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  text-align: left;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.evidence-quote-anchor:hover,
+.evidence-quote-anchor:focus-visible,
+.evidence-quote-anchor.is-related {
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
+  color: var(--ink);
+}
+
 .evidence-timeline .evidence-state {
   display: inline-block;
   margin-top: 10px;
@@ -1088,22 +1112,21 @@ a.project-entry .project-status {
   font-size: 11px;
 }
 
-.case-relation-bridge {
-  position: sticky;
-  top: calc(var(--header-height) + 28px);
-  align-self: start;
-  height: 260px;
+.case-connection-layer {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
   pointer-events: none;
 }
 
-.case-relation-bridge svg {
+.case-connection-layer svg {
   display: block;
   width: 100%;
   height: 100%;
   overflow: visible;
 }
 
-.case-relation-bridge path {
+.case-connection-path {
   fill: none;
   stroke: var(--accent);
   stroke-width: 2;
@@ -1112,10 +1135,8 @@ a.project-entry .project-status {
   vector-effect: non-scaling-stroke;
 }
 
-.case-relation-bridge span {
+.case-connection-label {
   position: absolute;
-  top: 108px;
-  left: 50%;
   width: max-content;
   padding: 3px 7px;
   border: 1px solid var(--accent);
@@ -1126,11 +1147,18 @@ a.project-entry .project-status {
   font-weight: 650;
   letter-spacing: 0.04em;
   line-height: 1.5;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .case-analysis {
+  position: relative;
+  z-index: 2;
   min-width: 0;
+}
+
+.case-evidence {
+  position: relative;
+  z-index: 2;
 }
 
 .case-analysis > section + section {
@@ -1147,10 +1175,22 @@ a.project-entry .project-status {
   gap: 26px;
   padding: 26px 0 28px;
   border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: background-color 160ms ease;
 }
 
 .claim-item:last-child {
   border-bottom: 0;
+}
+
+.claim-item:hover,
+.claim-item:focus-visible,
+.claim-item.is-related {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 13%, transparent),
+    transparent 72%
+  );
 }
 
 .claim-item > span {
@@ -1821,11 +1861,8 @@ a.project-entry .project-status {
   }
 
   .case-workbench {
-    grid-template-columns:
-      minmax(330px, 0.72fr)
-      46px
-      minmax(0, 1.28fr);
-    gap: 0;
+    grid-template-columns: minmax(330px, 0.72fr) minmax(0, 1.28fr);
+    gap: 46px;
   }
 
   .hotspots-index-hero,
@@ -2058,7 +2095,7 @@ a.project-entry .project-status {
     padding-top: 96px;
   }
 
-  .case-relation-bridge {
+  .case-connection-layer {
     display: none;
   }
 

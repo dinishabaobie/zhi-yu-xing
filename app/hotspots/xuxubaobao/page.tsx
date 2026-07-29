@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { SiteFooter, SiteHeader } from "../../site-chrome";
+import { EvidenceConnectionMap } from "./evidence-connection-map";
 
 export const metadata: Metadata = {
   title: "旭旭宝宝与《功夫女足》争议",
@@ -59,8 +61,63 @@ const evidence = [
   },
 ];
 
+const connectionLabels: Record<string, string> = {
+  "personal-choice": "个人选择",
+  "moral-inference": "从选择到道德判断",
+  "target-scope": "回应对象的范围",
+  "water-army": "水军主张",
+  "critic-generalization": "避免全称判断",
+};
+
+const quoteConnections: Record<
+  string,
+  { relationId: string; text: string }[]
+> = {
+  E1: [
+    {
+      relationId: "personal-choice",
+      text: "我只对周星驰本人出演的电影，这个，感兴趣。",
+    },
+    {
+      relationId: "moral-inference",
+      text: "问我去没去看，我说他本人不是主演的，我没去看。",
+    },
+  ],
+  E2: [
+    {
+      relationId: "target-scope",
+      text: "我错就错在对你们这帮人还是他妈太客气了。",
+    },
+  ],
+  E3: [
+    {
+      relationId: "critic-generalization",
+      text: "我骂的是那些啥呢？是那些，这个黑粉，这个，还有道德绑架以及网暴我的那些人。",
+    },
+    {
+      relationId: "water-army",
+      text: "嗯，这里边应该我觉得，应该是包含了一些，这个收了钱的水军呢，也有一些不明真相的群众。",
+    },
+    {
+      relationId: "target-scope",
+      text: "我说一地鸡毛，也是针对那些，这个生活不如意在网上道德绑架别人，然后呢，给别人乱切这些，这个这个，弄一些这个断章取义的那些黑切片的，也从来没有骂过我们直播间的这个观众和水友们啊。",
+    },
+  ],
+  E4: [
+    {
+      relationId: "moral-inference",
+      text: "有很多的黑切片就开始说，我抵制电影。甚至说我不看就不爱国了。",
+    },
+    {
+      relationId: "water-army",
+      text: "被人雇了水军，加上我的黑粉，发的黑切片像蝗虫一样。",
+    },
+  ],
+};
+
 const claims = [
   {
+    relationId: "personal-choice",
     status: "接受",
     tone: "accept",
     title: "个人可以按兴趣决定看不看一部电影",
@@ -68,6 +125,7 @@ const claims = [
     evidence: "依据 E1",
   },
   {
+    relationId: "moral-inference",
     status: "拒绝",
     tone: "reject",
     title: "“不看”等于抵制、不支持或不爱国",
@@ -75,6 +133,7 @@ const claims = [
     evidence: "依据 E1、E4",
   },
   {
+    relationId: "target-scope",
     status: "有条件接受",
     tone: "conditional",
     title: "“一地鸡毛”只针对恶意攻击者",
@@ -82,6 +141,7 @@ const claims = [
     evidence: "对照 E2、E3",
   },
   {
+    relationId: "water-army",
     status: "暂缓判断",
     tone: "pending",
     title: "大量评论来自付费水军",
@@ -89,6 +149,7 @@ const claims = [
     evidence: "当事方主张见 E3、E5",
   },
   {
+    relationId: "critic-generalization",
     status: "拒绝",
     tone: "reject",
     title: "所有批评者都是黑粉或被带节奏的人",
@@ -128,6 +189,40 @@ const crowdChain = [
   "“一地鸡毛”成为新情绪符号",
   "双方开始用身份代替论证",
 ];
+
+function connectedExcerpt(id: string, excerpt: string) {
+  const marks = (quoteConnections[id] ?? [])
+    .map((mark) => ({ ...mark, index: excerpt.indexOf(mark.text) }))
+    .filter((mark) => mark.index >= 0)
+    .sort((left, right) => left.index - right.index);
+  const parts: ReactNode[] = [];
+  let cursor = 0;
+
+  marks.forEach((mark) => {
+    if (mark.index > cursor) {
+      parts.push(excerpt.slice(cursor, mark.index));
+    }
+    parts.push(
+      <button
+        type="button"
+        className="evidence-quote-anchor"
+        data-relation-id={mark.relationId}
+        aria-label={`显示对应判断：${connectionLabels[mark.relationId]}`}
+        aria-pressed="false"
+        key={`${id}-${mark.relationId}-${mark.index}`}
+      >
+        {mark.text}
+      </button>,
+    );
+    cursor = mark.index + mark.text.length;
+  });
+
+  if (cursor < excerpt.length) {
+    parts.push(excerpt.slice(cursor));
+  }
+
+  return parts;
+}
 
 export default function XuxubaobaoCasePage() {
   return (
@@ -182,12 +277,17 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
           </p>
 
           <div className="case-workbench">
+            <EvidenceConnectionMap
+              labels={connectionLabels}
+              defaultRelationId="personal-choice"
+            />
+
             <aside className="case-evidence" aria-labelledby="evidence-title">
               <div className="case-evidence-sticky">
                 <div className="case-column-heading">
                   <p>原事件</p>
                   <h2 id="evidence-title">证据时间线</h2>
-                  <span>转录稿、当事方说法和独立结论分开标记。</span>
+                  <span>悬停原句查看对应判断，点击可以锁定关系。</span>
                 </div>
 
                 <ol className="evidence-timeline">
@@ -203,7 +303,11 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                         <p>{item.type}</p>
                         <h3>{item.title}</h3>
                         <p>{item.body}</p>
-                        {item.excerpt ? <blockquote>{item.excerpt}</blockquote> : null}
+                        {item.excerpt ? (
+                          <blockquote>
+                            {connectedExcerpt(item.id, item.excerpt)}
+                          </blockquote>
+                        ) : null}
                         {item.state ? (
                           <span className="evidence-state">{item.state}</span>
                         ) : null}
@@ -213,13 +317,6 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                 </ol>
               </div>
             </aside>
-
-            <div className="case-relation-bridge" aria-hidden="true">
-              <svg viewBox="0 0 100 260" preserveAspectRatio="none">
-                <path d="M 0 54 C 48 54, 52 174, 100 174" />
-              </svg>
-              <span>证据约束判断</span>
-            </div>
 
             <div className="case-analysis">
               <section aria-labelledby="ledger-title">
@@ -233,6 +330,11 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                   {claims.map((claim) => (
                     <article
                       className={`claim-item claim-${claim.tone}`}
+                      data-relation-id={claim.relationId}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`显示原句来源：${claim.title}`}
+                      aria-pressed="false"
                       key={claim.title}
                     >
                       <span>{claim.status}</span>
