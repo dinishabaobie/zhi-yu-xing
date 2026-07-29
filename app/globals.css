@@ -107,6 +107,18 @@ img {
   transform: translateY(-150%);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link:focus {
   transform: translateY(0);
 }
@@ -882,8 +894,15 @@ a.project-entry .project-status {
 }
 
 .case-evidence-sticky {
+  position: relative;
+}
+
+.case-evidence .case-column-heading {
   position: sticky;
-  top: calc(var(--header-height) + 30px);
+  top: var(--header-height);
+  z-index: 1;
+  padding-top: 30px;
+  background: var(--page);
 }
 
 .case-column-heading {
@@ -933,10 +952,25 @@ a.project-entry .project-status {
   border-bottom: 1px solid var(--line);
 }
 
-.evidence-timeline time {
+.evidence-marker {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.evidence-marker time {
   color: var(--ink-soft);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
+}
+
+.evidence-marker span {
+  width: fit-content;
+  padding: 1px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 650;
 }
 
 .evidence-timeline p {
@@ -963,7 +997,17 @@ a.project-entry .project-status {
   line-height: 1.65;
 }
 
-.evidence-timeline div > span {
+.evidence-timeline blockquote {
+  margin: 14px 0 0;
+  padding: 13px 16px;
+  border-left: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.evidence-timeline .evidence-state {
   display: inline-block;
   margin-top: 10px;
   padding-bottom: 1px;
@@ -1023,6 +1067,13 @@ a.project-entry .project-status {
 .claim-item p {
   margin: 10px 0 0;
   color: var(--ink-soft);
+}
+
+.claim-evidence {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: 11px;
 }
 
 .analysis-section-title {
@@ -1146,6 +1197,12 @@ a.project-entry .project-status {
   grid-template-columns: 1fr 1fr;
   gap: clamp(28px, 4vw, 54px);
   margin-top: 38px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.crowd-reading .instinct-default {
+  grid-column: 1 / -1;
   padding-top: 28px;
   border-top: 1px solid var(--line);
 }
@@ -1873,6 +1930,11 @@ a.project-entry .project-status {
 
   .case-evidence-sticky {
     position: static;
+  }
+
+  .case-evidence .case-column-heading {
+    position: static;
+    padding-top: 0;
   }
 
   .claim-item {

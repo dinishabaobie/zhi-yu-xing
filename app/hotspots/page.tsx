@@ -45,7 +45,6 @@ export default function HotspotsPage() {
             <Link
               className="hotspot-index-entry"
               href="/hotspots/xuxubaobao"
-              aria-label="阅读旭旭宝宝功夫女足争议分析"
             >
               <div className="hotspot-index-copy">
                 <p>旭旭宝宝与《功夫女足》争议</p>
@@ -58,7 +57,7 @@ export default function HotspotsPage() {
                 </span>
               </div>
 
-              <div className="hotspot-case-sheet" aria-hidden="true">
+              <div className="hotspot-case-sheet">
                 <div>
                   <span>当前判断</span>
                   <strong>有条件接受</strong>

@@ -156,12 +156,8 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
               <Link
                 className="project-entry"
                 href="/hotspots"
-                aria-label="进入社会热点板块"
               >
-                <div
-                  className="hotspot-portal-preview"
-                  aria-label="旭旭宝宝热点分析预览"
-                >
+                <div className="hotspot-portal-preview">
                   <div className="hotspot-preview-head">
                     <span>当前案例</span>
                     <span>更新于 2026.07.29</span>

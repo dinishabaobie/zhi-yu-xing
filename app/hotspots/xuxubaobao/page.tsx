@@ -10,39 +10,52 @@ export const metadata: Metadata = {
 
 const evidence = [
   {
+    id: "E1",
     date: "07.16",
-    type: "原始发言",
+    type: "笔记转录",
     title: "表达个人观影偏好",
     body: "他说自己喜欢周星驰作为演员，但对周星驰只担任导演或编剧的作品兴趣较低，并多次强调这是个人感受。",
-    state: "转录在手，原视频链接待补",
+    excerpt:
+      "“我只对周星驰本人出演的电影感兴趣。……他当导演、编剧啥的，我就没有对他本人出演的电影那么感兴趣。”",
+    state: "用户笔记转录，待核原视频",
   },
   {
+    id: "E2",
     date: "07.18",
-    type: "原始回应",
+    type: "笔记转录",
     title: "争议对象发生变化",
     body: "他先以道歉开场，随后使用“你们这帮人”和“一地鸡毛”等攻击性表达。争论从看不看电影转向他究竟在骂谁。",
-    state: "转录在手，原视频链接待补",
+    excerpt:
+      "“我错就错在对你们这帮人还是他妈太客气了。……先把你自己一地鸡毛的生活过好了再说吧。”",
+    state: "用户笔记转录，待核原视频",
   },
   {
+    id: "E3",
     date: "07.19",
-    type: "当事方说明",
+    type: "笔记转录",
     title: "限定回应对象",
     body: "他表示批评对象是黑粉、恶意剪辑者和进行道德捆绑的人，不包括普通观众与普通粉丝。",
-    state: "当事方主张",
+    excerpt:
+      "“我骂的是那些黑粉，还有道德绑架以及网暴我的那些人。我从来没有骂过我们正常的这些观众。”",
+    state: "当事方自述，待核原视频",
   },
   {
+    id: "E4",
     date: "07.20",
-    type: "当事方说明",
+    type: "笔记转录",
     title: "重申没有抵制电影",
     body: "他称部分剪辑把个人偏好改写成“抵制电影”和“不看就是不爱国”，并再次拒绝向恶意攻击者道歉。",
-    state: "当事方主张",
+    excerpt:
+      "“有很多的黑切片就开始说，我抵制电影。甚至说我不看就不爱国了。”",
+    state: "当事方自述，待核原视频",
   },
   {
+    id: "E5",
     date: "07.22",
-    type: "公司声明",
+    type: "媒体转述",
     title: "提出水军主张",
     body: "相关公司表示已收集部分证据、向警方报案，并悬赏征集水军线索。声明证明主张已经提出，不等于事实已经确认。",
-    state: "独立结论待核验",
+    state: "公司声明经媒体转述，独立结论待核验",
   },
 ];
 
@@ -52,30 +65,35 @@ const claims = [
     tone: "accept",
     title: "个人可以按兴趣决定看不看一部电影",
     body: "原始表述是行动偏好，不是电影质量判断，也没有要求其他人跟随。",
+    evidence: "依据 E1",
   },
   {
     status: "拒绝",
     tone: "reject",
     title: "“不看”等于抵制、不支持或不爱国",
     body: "从个人选择到道德结论之间缺少必要前提，属于把原命题升级后再进行批评。",
+    evidence: "依据 E1、E4",
   },
   {
     status: "有条件接受",
     tone: "conditional",
     title: "“一地鸡毛”只针对恶意攻击者",
     body: "后续说明可以解释说话意图，但原视频中的“你们”没有清楚限定范围，普通观众感到被波及并非只能由恶意剪辑解释。",
+    evidence: "对照 E2、E3",
   },
   {
     status: "暂缓判断",
     tone: "pending",
     title: "大量评论来自付费水军",
     body: "复制文本和集中出现只能提高协同传播的可能性。要确认付费组织，还需要任务指令、资金、账号网络或平台与警方结论。",
+    evidence: "当事方主张见 E3、E5",
   },
   {
     status: "拒绝",
     tone: "reject",
     title: "所有批评者都是黑粉或被带节奏的人",
     body: "有人可能只是反对侮辱性表达。反对回应方式，不等于赞同恶意剪辑。",
+    evidence: "对照 E2、E3",
   },
 ];
 
@@ -106,7 +124,7 @@ const crowdChain = [
   "个人观影偏好",
   "被压缩成“不支持周星驰”",
   "上升为立场和道德判断",
-  "相同说法被反复复制",
+  "当事方称相同说法被反复复制",
   "“一地鸡毛”成为新情绪符号",
   "双方开始用身份代替论证",
 ];
@@ -169,20 +187,24 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                 <div className="case-column-heading">
                   <p>原事件</p>
                   <h2 id="evidence-title">证据时间线</h2>
-                  <span>原始材料、当事方说法和独立结论分开标记。</span>
+                  <span>转录稿、当事方说法和独立结论分开标记。</span>
                 </div>
 
                 <ol className="evidence-timeline">
                   {evidence.map((item) => (
                     <li key={`${item.date}-${item.title}`}>
-                      <time dateTime={`2026-${item.date.replace(".", "-")}`}>
-                        {item.date}
-                      </time>
+                      <div className="evidence-marker">
+                        <time dateTime={`2026-${item.date.replace(".", "-")}`}>
+                          {item.date}
+                        </time>
+                        <span>{item.id}</span>
+                      </div>
                       <div>
                         <p>{item.type}</p>
                         <h3>{item.title}</h3>
                         <p>{item.body}</p>
-                        <span>{item.state}</span>
+                        {item.excerpt ? <blockquote>{item.excerpt}</blockquote> : null}
+                        <span className="evidence-state">{item.state}</span>
                       </div>
                     </li>
                   ))}
@@ -208,6 +230,7 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                       <div>
                         <h3>{claim.title}</h3>
                         <p>{claim.body}</p>
+                        <span className="claim-evidence">{claim.evidence}</span>
                       </div>
                     </article>
                   ))}
@@ -245,7 +268,7 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                 <div className="analysis-section-title">
                   <h2 id="crowd-title">群体心理的适用门槛</h2>
                   <p>
-                    当前结论是“有条件通过”。能看到共同刺激、重复语言和阵营化，但没有独立数据证明所有批评者形成了同一种心理群体。
+                    当前结论是“有条件通过”。当事方描述了共同刺激、重复语言和阵营化，但没有评论样本或独立数据证明所有批评者形成了同一种心理群体。
                   </p>
                 </div>
 
@@ -266,6 +289,12 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                     <h3>理论边界</h3>
                     <p>
                       《乌合之众》提供的是机制假说，不是现代实证定律。它不能证明谁是水军，也不能给某个群体贴病理标签。
+                    </p>
+                  </div>
+                  <div className="instinct-default">
+                    <h3>直觉默认错误</h3>
+                    <p>
+                      最容易犯的错，是只看最刺眼的切片就先选阵营。高情绪片段更容易被记住，重复出现也容易被误当作多份独立证据，但它既不能还原完整发言，也不能证明付费组织。
                     </p>
                   </div>
                 </div>
@@ -303,6 +332,7 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                     >
                       新浪科技：原始偏好与 7 月 18 日回应
                       <span aria-hidden="true">↗</span>
+                      <span className="sr-only">（在新窗口打开）</span>
                     </a>
                   </li>
                   <li>
@@ -313,6 +343,7 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                     >
                       游民星空：7 月 20 日回应
                       <span aria-hidden="true">↗</span>
+                      <span className="sr-only">（在新窗口打开）</span>
                     </a>
                   </li>
                   <li>
@@ -323,6 +354,7 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                     >
                       白鹿视频相关报道：公司声明与悬赏
                       <span aria-hidden="true">↗</span>
+                      <span className="sr-only">（在新窗口打开）</span>
                     </a>
                   </li>
                   <li>
@@ -333,6 +365,18 @@ FORM: 在既有知识索引桌中扩展一张案件卷宗，桌面采用 42 比 
                     >
                       中华网：对回应方式的相反视角
                       <span aria-hidden="true">↗</span>
+                      <span className="sr-only">（在新窗口打开）</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://dinishabaobie.github.io/logic-field-guide/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      逻辑学：本页使用的七关方法
+                      <span aria-hidden="true">↗</span>
+                      <span className="sr-only">（在新窗口打开）</span>
                     </a>
                   </li>
                 </ul>

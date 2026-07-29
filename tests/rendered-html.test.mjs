@@ -123,9 +123,12 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
   assert.match(hotspotsHtml, /href="\/hotspots\/xuxubaobao"/);
 
   assert.match(caseHtml, /证据时间线/);
+  assert.match(caseHtml, /E1/);
+  assert.match(caseHtml, /用户笔记转录，待核原视频/);
   assert.match(caseHtml, /判断账本/);
   assert.match(caseHtml, /用逻辑学的七关检查/);
   assert.match(caseHtml, /群体心理的适用门槛/);
+  assert.match(caseHtml, /直觉默认错误/);
   assert.match(caseHtml, /暂缓判断/);
   assert.match(caseHtml, /什么证据会让我改判/);
   assert.match(caseHtml, /data-design-contract/);
