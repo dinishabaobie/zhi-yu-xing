@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SiteMotion } from "./site-motion";
 import { siteAsset } from "./site-path";
 
 export const metadata: Metadata = {
@@ -42,6 +43,9 @@ const themeScript = `
     const saved = localStorage.getItem("zhiyuxing-theme");
     const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     document.documentElement.dataset.theme = saved || preferred;
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("gsap-anim");
+    }
   } catch {}
 `;
 
@@ -55,7 +59,10 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SiteMotion />
+      </body>
     </html>
   );
 }

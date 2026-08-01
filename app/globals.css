@@ -46,7 +46,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 24px);
 }
 
@@ -588,6 +587,12 @@ img {
   aspect-ratio: 2400 / 1244;
 }
 
+.parallax-media {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
 .project-image img {
   position: absolute;
   inset: 0;
@@ -986,6 +991,303 @@ a.project-entry .project-status {
   line-height: 1.75;
 }
 
+.case-ledger,
+.case-gate {
+  margin-top: clamp(84px, 10vw, 132px);
+}
+
+.case-ledger-lead > p:first-child,
+.case-gate-lead > p:first-child {
+  margin: 0 0 10px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.case-ledger-lead h2,
+.case-gate-lead h2 {
+  max-width: 16ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.4vw, 48px);
+  font-weight: 580;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.case-ledger-lead > p:last-child,
+.case-gate-lead > p:last-child {
+  max-width: 44rem;
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.case-ledger-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(24px, 2.6vw, 40px);
+  margin-top: clamp(38px, 4vw, 56px);
+  padding-top: 26px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.case-ledger-grid h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 610;
+  letter-spacing: -0.02em;
+}
+
+.case-ledger-grid article > span {
+  display: block;
+  margin-top: 6px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.case-ledger-grid ul {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-ledger-grid li {
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.68;
+}
+
+.case-gate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 2.6vw, 38px);
+  margin-top: clamp(38px, 4vw, 56px);
+}
+
+.case-gate-grid article {
+  padding: clamp(28px, 3vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.case-gate-grid .gate-homo {
+  border-color: var(--accent);
+}
+
+.case-gate-grid header {
+  display: grid;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.case-gate-grid header span {
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.case-gate-grid header strong {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 610;
+  letter-spacing: -0.025em;
+}
+
+.case-gate-grid .gate-homo header strong {
+  color: var(--accent);
+}
+
+.case-gate-grid dl {
+  margin: 0;
+}
+
+.case-gate-grid dl > div {
+  display: grid;
+  grid-template-columns: 122px minmax(0, 1fr);
+  gap: 20px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.case-gate-grid dt {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.case-gate-grid dd {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.68;
+}
+
+.case-gate-note,
+.case-questions-note {
+  max-width: 62rem;
+  margin: clamp(32px, 3.4vw, 46px) 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line-strong);
+  color: var(--ink-soft);
+  font-size: clamp(16px, 1.35vw, 18px);
+  line-height: 1.78;
+}
+
+.case-gate-note strong,
+.case-questions-note strong,
+.case-ledger-audit strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.case-ledger-audit {
+  margin-top: clamp(38px, 4vw, 54px);
+  padding: clamp(28px, 3vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.case-ledger-audit > h3 {
+  max-width: 52rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.7vw, 24px);
+  font-weight: 610;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.case-ledger-audit > h3 em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.case-ledger-audit dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 clamp(24px, 2.6vw, 40px);
+  margin: 26px 0 0;
+}
+
+.case-ledger-audit dl > div {
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.case-ledger-audit dt {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.case-ledger-audit dt span {
+  padding: 2px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 11px;
+}
+
+.case-ledger-audit .angle-fail dt span {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.case-ledger-audit dd {
+  margin: 7px 0 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.case-ledger-audit > p {
+  max-width: 60rem;
+  margin: 26px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+.case-questions {
+  margin-top: clamp(84px, 10vw, 132px);
+}
+
+.case-questions-lead > p:first-child {
+  margin: 0 0 10px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.case-questions-lead h2 {
+  max-width: 16ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.4vw, 48px);
+  font-weight: 580;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.case-questions-lead > p:last-child {
+  max-width: 44rem;
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.case-questions ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(34px, 4vw, 64px);
+  margin: clamp(38px, 4vw, 56px) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.case-questions li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 20px;
+  padding: 22px 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.case-questions li > span {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.case-questions h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.7vw, 24px);
+  font-weight: 610;
+  letter-spacing: -0.02em;
+}
+
+.case-questions li p {
+  max-width: 34rem;
+  margin: 10px 0 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.72;
+}
+
 .case-workbench {
   padding-top: clamp(98px, 11vw, 156px);
 }
@@ -1193,6 +1495,37 @@ a.project-entry .project-status {
   margin: 11px 0 0;
   color: var(--ink-soft);
   line-height: 1.72;
+}
+
+.analysis-node strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.analysis-node .analysis-node-claim {
+  margin-top: 15px;
+  padding: 2px 0 2px 14px;
+  border-left: 2px solid var(--accent);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.64;
+}
+
+.analysis-node .analysis-node-claim > span,
+.analysis-node .analysis-node-revision > span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.analysis-node .analysis-node-revision {
+  margin-top: 15px;
+  padding-top: 13px;
+  border-top: 1px dashed var(--line-strong);
+  font-size: 14px;
+  line-height: 1.64;
 }
 
 .evidence-quote-anchor {
@@ -1736,67 +2069,34 @@ a.project-entry .project-status {
   outline-offset: 4px;
 }
 
+/* GSAP 接管入场动画：gsap-anim 由 <head> 内联脚本在首帧前打上，
+   仅预隐藏首屏元素避免闪现；gsap-live 表示 GSAP 已运行。
+   若脚本加载失败，2.6s 后由兜底动画显示内容。 */
 @media (prefers-reduced-motion: no-preference) {
-  .hero-copy > * {
-    animation: hero-copy-in 720ms both cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .hero-copy > :nth-child(2) {
-    animation-delay: 70ms;
-  }
-
-  .hero-copy > :nth-child(3) {
-    animation-delay: 130ms;
-  }
-
-  .hero-copy > :nth-child(4) {
-    animation-delay: 190ms;
-  }
-
-  .hero-visual {
-    animation: hero-visual-in 980ms 100ms both
-      cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: section-reveal linear both;
-      animation-timeline: view();
-      animation-range: entry 8% cover 32%;
-    }
-  }
-}
-
-@keyframes hero-copy-in {
-  from {
+  html.gsap-anim .hero-copy .hero-kicker,
+  html.gsap-anim .hero-quote > span,
+  html.gsap-anim .hero-quote-detail > span,
+  html.gsap-anim .hero-actions,
+  html.gsap-anim .hero-visual,
+  html.gsap-anim .collection-title > *,
+  html.gsap-anim .collection-intro > * {
     opacity: 0;
-    transform: translateY(24px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  html.gsap-anim:not(.gsap-live) .hero-copy .hero-kicker,
+  html.gsap-anim:not(.gsap-live) .hero-quote > span,
+  html.gsap-anim:not(.gsap-live) .hero-quote-detail > span,
+  html.gsap-anim:not(.gsap-live) .hero-actions,
+  html.gsap-anim:not(.gsap-live) .hero-visual,
+  html.gsap-anim:not(.gsap-live) .collection-title > *,
+  html.gsap-anim:not(.gsap-live) .collection-intro > * {
+    animation: gsap-entrance-fallback 0.5s 2.6s both;
   }
 }
 
-@keyframes hero-visual-in {
-  from {
-    clip-path: inset(0 100% 0 0 round var(--radius));
-    filter: blur(8px);
-  }
-  to {
-    clip-path: inset(0 0 0 0 round var(--radius));
-    filter: blur(0);
-  }
-}
-
-@keyframes section-reveal {
-  from {
-    opacity: 0.25;
-    transform: translateY(32px);
-  }
+@keyframes gsap-entrance-fallback {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -1880,6 +2180,20 @@ a.project-entry .project-status {
 
   .case-conclusion,
   .case-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .case-ledger-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px;
+  }
+
+  .case-ledger-audit dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-gate-grid,
+  .case-questions ol {
     grid-template-columns: 1fr;
   }
 
@@ -2136,6 +2450,33 @@ a.project-entry .project-status {
     gap: 8px;
   }
 
+  .case-ledger-grid,
+  .case-gate-grid,
+  .case-ledger-audit dl,
+  .case-questions ol {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .case-ledger-audit dl,
+  .case-questions ol {
+    gap: 0;
+  }
+
+  .case-gate-grid article,
+  .case-ledger-audit {
+    padding: 26px 22px;
+  }
+
+  .case-gate-grid dl > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .case-questions li {
+    gap: 14px;
+  }
+
   .case-methods {
     gap: 34px;
   }
@@ -2263,10 +2604,6 @@ a.project-entry .project-status {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {

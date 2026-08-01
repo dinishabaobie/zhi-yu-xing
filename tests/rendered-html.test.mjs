@@ -155,7 +155,7 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
   assert.match(caseHtml, /四段完整原话，四个时间截面/);
   assert.match(caseHtml, /后来发生的事，不能提前成为理由/);
   assert.match(caseHtml, /16 日只看 16 日/);
-  assert.match(caseHtml, /四段原视频已核实/);
+  assert.match(caseHtml, /四段原视频转录/);
   assert.doesNotMatch(
     caseHtml,
     /用户笔记转录，待核原视频|当事方自述，待核原视频/,
@@ -166,31 +166,99 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
   assert.match(caseHtml, /清醒的，充满正义感的人/);
   assert.match(caseHtml, /case-connection-layer/);
   assert.match(caseHtml, /data-relation-id="16-preference"/);
-  assert.match(caseHtml, /显示对应判断：个人偏好/);
+  assert.match(caseHtml, /显示对应判断：说的是他自己/);
   assert.match(caseHtml, /分析截止 7 月 16 日/);
-  assert.match(caseHtml, /累计使用截至当日的一段材料：仅 7 月 16 日直播原话/);
+  assert.match(caseHtml, /这一天只看这一天/);
   assert.match(caseHtml, /分析截止 7 月 18 日/);
-  assert.match(caseHtml, /累计使用 7 月 16、18 日两段材料/);
+  assert.match(caseHtml, /看 16 日和 18 日两天/);
   assert.match(caseHtml, /分析截止 7 月 19 日/);
-  assert.match(caseHtml, /累计使用 7 月 16、18、19 日三段材料/);
+  assert.match(caseHtml, /看 16、18、19 三天/);
   assert.match(caseHtml, /分析截止 7 月 20 日/);
-  assert.match(caseHtml, /累计对照 7 月 16、18、19、20 日全部四段材料/);
-  assert.match(caseHtml, /水军说法的确定度发生了跳跃/);
-  assert.match(caseHtml, /反讽式道歉把“解释原话”改造成公开反击/);
-  assert.match(caseHtml, /“正常观众”与“黑粉”二分/);
-  assert.match(caseHtml, /旭旭宝宝的错误/);
-  assert.match(caseHtml, /舆论升级点/);
-  assert.match(caseHtml, /回应决策复盘/);
-  assert.match(caseHtml, /四天对照后可确认推理断点/);
-  assert.match(caseHtml, /四段材料展示的都是旭旭宝宝对评论的概括/);
-  assert.doesNotMatch(caseHtml, /但本段只提供/);
-  assert.match(caseHtml, /乌合之众：重复与传染/);
-  assert.match(caseHtml, /乌合之众：神圣信念边界/);
+  assert.match(caseHtml, /四天全看/);
+
+  // 事实账本与六角度核查必须先于逐句判断出现
+  assert.match(caseHtml, /事实账本/);
+  assert.match(caseHtml, /先看每句话是从哪来的/);
+  assert.match(caseHtml, /他看得到，我们看不到/);
+  assert.match(caseHtml, /仍然未知/);
+  for (const angle of [
+    "接近性",
+    "可核验性",
+    "独立性",
+    "完整性",
+    "动机与能力",
+    "时效性",
+  ]) {
+    assert.match(caseHtml, new RegExp(angle), `六角度缺少 ${angle}`);
+  }
+
+  // 亲历与推测必须分开：当事人对自身遭遇的陈述不按转述处理
+  assert.match(caseHtml, /他自己遇到的事/);
+  assert.match(caseHtml, /自己亲身经历的事不用向别人举证，猜的事才要/);
+  assert.doesNotMatch(caseHtml, /“无数人”在评论区和私信里指责、谩骂、侮辱他。/);
+  // 六角度核查的对象必须是推测，不是亲历
+  assert.match(caseHtml, /这六条是用来查“猜的”，不是用来查“亲身经历的”/);
+
+  // 群体分类用《乌合之众》第九章的异质性 / 同质性，而不是自造框架
+  assert.match(caseHtml, /群体分类/);
+  assert.match(caseHtml, /异质性群体/);
+  assert.match(caseHtml, /同质性群体/);
+  assert.ok(
+    caseHtml.indexOf("群体分类") < caseHtml.indexOf('id="E1-source-title"'),
+    "群体分类必须在第一段逐日分析之前给出",
+  );
+
+  // 每条判断都要带标准化命题；除结构性结论外都要给改判条件
+  assert.match(caseHtml, /analysis-node-claim/);
+  assert.match(caseHtml, /analysis-node-revision/);
+  assert.match(caseHtml, /改判条件/);
+
+  // 必须写明这是挑选过的关键句，不是逐句穷举
+  assert.match(caseHtml, /只挑关键的句子/);
+  assert.match(caseHtml, /不是逐句穷举/);
+
+  // 判断节点必须挂在站内逻辑学的同一套七关上
+  for (const gate of [
+    "逻辑 01 · 定词",
+    "逻辑 02 · 正句",
+    "逻辑 03 · 验据",
+    "逻辑 04 · 搭桥",
+    "逻辑 05 · 查一致",
+    "逻辑 06 · 校准概率",
+    "逻辑 07 · 重建论证",
+  ]) {
+    assert.match(caseHtml, new RegExp(gate), `缺少七关中的 ${gate}`);
+  }
+
+  // 《乌合之众》必须点到具体章节机制
+  assert.match(caseHtml, /乌合之众 3 · 群体的想象力/);
+  assert.match(caseHtml, /乌合之众 7 · 断言、重复、传染/);
+  assert.match(caseHtml, /乌合之众 10 · 用正义包装/);
+
+  // 《简单的逻辑学》第 7 步要求的结论四栏
+  assert.match(caseHtml, /适用范围/);
+  assert.match(caseHtml, /最大不确定性/);
+  assert.match(caseHtml, /什么证据会改判/);
+  assert.match(caseHtml, /最小可逆行动/);
+
+  // 读者可带走的五问
+  assert.match(caseHtml, /事实清楚了吗？/);
+  assert.match(caseHtml, /有没有另一方说法？/);
+  assert.match(caseHtml, /我现在是在判断，还是在发泄？/);
+  assert.match(caseHtml, /情绪越强，判断越慢/);
+
+  // 可读性：不使用未加解释的术语
+  for (const jargon of ["主项", "谓项", "肯定后件", "轻率概括", "便利样本", "外延"]) {
+    assert.doesNotMatch(caseHtml, new RegExp(jargon), `热点页不应出现术语「${jargon}」`);
+  }
+
   assert.match(caseHtml, /暂缓判断/);
-  assert.match(caseHtml, /两条错误链互相喂养，却不能互相证明/);
+  assert.match(caseHtml, /两边都在拿“谁是自己人”代替“这话对不对”/);
   assert.match(caseHtml, /href="\/knowledge\/logic"/);
   assert.match(caseHtml, /data-design-contract/);
   assert.doesNotMatch(caseHtml, /付费水军已经|证实存在付费水军/);
+  // 材料不对称必须写明，不能让读者以为两边证据一样多
+  assert.match(caseHtml, /没有对方的一份/);
   assert.doesNotMatch(
     caseHtml,
     /dinishabaobie\.github\.io\/logic-field-guide/,
@@ -198,41 +266,38 @@ test("publishes the social-hotspot index and evidence-led case analysis", async 
 
   for (const relationId of [
     "16-preference",
-    "16-conflict-frame",
     "16-evaluation",
     "16-consensus",
-    "18-choice",
-    "18-friends",
-    "18-rhetoric",
+    "18-scale",
     "18-target",
-    "18-attack",
-    "18-escalation-vow",
-    "19-counter-mobilize",
+    "18-image",
+    "18-escalation",
+    "19-consistency",
     "19-scope",
     "19-boundary",
-    "19-coordination",
-    "19-water",
-    "19-two-buckets",
-    "19-accountability",
-    "19-repair",
-    "20-negative",
+    "19-copy",
+    "20-compress",
     "20-boycott",
-    "20-symbol",
-    "20-certainty",
-    "20-locust",
-    "20-agency",
+    "20-sacred",
+    "20-jump",
     "20-commit",
     "20-camps",
   ]) {
     const matches = caseHtml.match(
       new RegExp(`data-relation-id="${relationId}"`, "g"),
     );
-    assert.equal(
-      matches?.length,
-      2,
-      `${relationId} should connect one original quote to one analysis node`,
+    assert.ok(
+      (matches?.length ?? 0) >= 2,
+      `${relationId} should connect at least one original quote to its analysis node`,
     );
   }
+
+  // 每个判断节点必须恰好对应一处解析，原句锚点可以多于一处
+  const nodeIds = [
+    ...caseHtml.matchAll(/class="analysis-node [^"]*" data-relation-id="([^"]+)"/g),
+  ].map((match) => match[1]);
+  assert.equal(nodeIds.length, 17);
+  assert.equal(new Set(nodeIds).size, 17);
 
   const day16 = caseHtml.slice(
     caseHtml.indexOf('id="E1-source-title"'),

@@ -102,6 +102,7 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
               width={2400}
               height={1350}
               priority
+              unoptimized
               sizes="(max-width: 767px) 100vw, 58vw"
               className="hero-image"
             />
@@ -124,19 +125,22 @@ FORM: 七个方向中的第六个，采用非对称档案接触印样展开；�
                   aria-label={`进入${portal.title}板块`}
                 >
                   <div className="project-image">
-                    <Image
-                      src={portal.image}
-                      alt={portal.alt}
-                      width={portal.width}
-                      height={portal.height}
-                      sizes={
-                        portal.id === "games"
-                          ? "(max-width: 767px) 100vw, 58vw"
-                          : portal.id === "knowledge"
-                            ? "(max-width: 767px) 100vw, 82vw"
-                            : "(max-width: 767px) 100vw, 40vw"
-                      }
-                    />
+                    <div className="parallax-media">
+                      <Image
+                        src={portal.image}
+                        alt={portal.alt}
+                        width={portal.width}
+                        height={portal.height}
+                        unoptimized
+                        sizes={
+                          portal.id === "games"
+                            ? "(max-width: 767px) 100vw, 58vw"
+                            : portal.id === "knowledge"
+                              ? "(max-width: 767px) 100vw, 82vw"
+                              : "(max-width: 767px) 100vw, 40vw"
+                        }
+                      />
+                    </div>
                   </div>
                   <div className="project-copy">
                     <div>

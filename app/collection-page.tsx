@@ -74,18 +74,21 @@ export function CollectionPage({
                 <div
                   className={`collection-image ${item.imageClassName ?? ""}`}
                 >
-                  <Image
-                    src={siteAsset(item.image)}
-                    alt={item.alt}
-                    width={item.imageWidth ?? 735}
-                    height={item.imageHeight ?? 480}
-                    sizes={
-                      items.length === 1
-                        ? "(max-width: 767px) 100vw, 72vw"
-                        : "(max-width: 767px) 100vw, 48vw"
-                    }
-                    priority={index === 0}
-                  />
+                  <div className="parallax-media">
+                    <Image
+                      src={siteAsset(item.image)}
+                      alt={item.alt}
+                      width={item.imageWidth ?? 735}
+                      height={item.imageHeight ?? 480}
+                      unoptimized
+                      sizes={
+                        items.length === 1
+                          ? "(max-width: 767px) 100vw, 72vw"
+                          : "(max-width: 767px) 100vw, 48vw"
+                      }
+                      priority={index === 0}
+                    />
+                  </div>
                 </div>
                 <div className="collection-copy">
                   <div>
